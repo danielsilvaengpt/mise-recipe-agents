@@ -25,7 +25,8 @@
 ```text
 mise-recipe-agents/
 ├── landing/    # Landing page cinematográfica & editorial de alta fidelidade
-└── app/        # Aplicação interativa em Python (CrewAI + FastAPI + Streamlit) [Em breve]
+└── backend/        # Aplicação interativa em Python (CrewAI + FastAPI) [Em breve]
+└── web-app/        # page web interativa para testar o uso da criação das receitas e crud dos alimentos
 ```
 
 ---
@@ -132,9 +133,15 @@ npm run build
  ```
 ---
 
-## 🍳 Aplicação Python (`app/`)
+## 🍳 Backend Python (`backend/`)
 
-> *Secção reservada para a integração da aplicação central com CrewAI, FastAPI e Streamlit.*
+> *Secção reservada para a integração da aplicação central com CrewAI, FastAPI.*
+
+---
+
+## 🍳  (`web-app/`)
+
+> *Secção reservada para a integração da web app ao landing page *
 
 ---
 
