@@ -47,12 +47,21 @@
   - Inclusão de textura de ruído analógico de papel de prensa de tipografia (`feTurbulence`) em toda a página.
   - Alternador de animações temático: «Lume vivo» vs. «Lume brando» com ícone `Flame`.
   - Anotações de margem de cozinheiro (*marginalia*) e materialidade táctil.
+- `[Fase 11]` Polimento Técnico, Carrossel de Stack & Nitidez Tipográfica:
+  - Resolução do erro de hooks do React (`useTransform` condicional) no alternador «Lume vivo / Lume brando».
+  - Unificação do hook `useAppMotion()` em todos os componentes para controlo global imediato.
+  - Hiperligação direta com `target="_blank"` para o repositório GitHub [mise-recipe-agents](https://github.com/danielsilvaengpt/mise-recipe-agents) no rodapé.
+  - Criação do componente `TechStackCarousel.tsx`: carrossel contínuo (infinite marquee a 60 FPS) entre o Hero e o Problema, com links oficiais para CrewAI, React 19, TypeScript, FastAPI, Framer Motion, Streamlit, Tailwind CSS, Vite e Lucide.
+  - Eliminação total do desfoque de texto: remoção de filtros de blur e distorções 3D contínuas em `Hero.tsx` e `Agents.tsx`, com antialiasing subpixel nítido (`text-rendering: optimizeLegibility`).
 
 ## 4. Decisões tomadas
 - Stack: Vite + React + TypeScript + Tailwind + Framer Motion + lucide-react — site estático, separado da app Streamlit.
 - Conceito visual: "caderno de tasca + mesa de comando de IA" (ver `DESIGN.md`).
 - Textos só de `CONTENT.md`, via `src/data/content.ts`.
 - URL da app só via `VITE_APP_URL`.
+- 2026-10-26: Eliminação de projeções 3D contínuas sobre áreas de leitura tipográfica para garantir que as fontes mantêm nitidez de 100% sem desfoque de renderização.
+- 2026-10-26: Implementação do `TechStackCarousel` com links oficiais da stack para conferir credibilidade e transparência técnica.
+- 2026-10-26: Aprovado o Sistema 1 de Tipografia (`Fraunces` + `Plus Jakarta Sans` + `Space Mono`) para conferir personalidade quente de cozinha e sofisticação editorial.
 - 2026-10-26: Aprovado o Sistema 1 de Tipografia (`Fraunces` + `Plus Jakarta Sans` + `Space Mono`) para conferir personalidade quente de cozinha e sofisticação editorial.
 - 2026-10-26: Rebranding oficial da landing page para **Mise** (alusão a *mise en place*).
 - 2026-10-26: Removida a sobreposição forçada de CSS global de reduced-motion em `src/index.css` que bloqueava animações JavaScript do Framer Motion em navegadores com sinalizador do Windows ativado.
@@ -72,6 +81,7 @@
 
 | Data | Resumo | Estado do build |
 |---|---|---|
+| 2026-10-26 | Conclusão da Fase 11: Polimento Técnico, Carrossel de Stack Tecnológica & Nitidez Tipográfica | Passou (0 erros) |
 | 2026-10-26 | Conclusão da Fase 10: Human Craft & Anti-AI Polish (textura de papel analógico, fita crepe de chef, eliminação de sparkles e marginalia) | Passou (0 erros) |
 | 2026-10-26 | Conclusão da Fase 9: Tipografia Sistema 1 (Fraunces + Plus Jakarta Sans + Space Mono) e rebranding para Mise | Passou (0 erros) |
 | 2026-10-26 | Conclusão da Fase 8: Abertura Cinemática do Hero («A Bancada Noturna do Chef»), iluminação volumétrica, acoplamento de calha e flutuação 3D | Passou (0 erros) |

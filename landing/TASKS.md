@@ -82,6 +82,15 @@ Antes de começar, lê `CLAUDE.md`, `DESIGN.md` e `CONTENT.md`.
 - [x] 10.6 Carimbos com textura física de borracha desgastada e micro-anotações à margem
 - [x] 10.7 Compilação limpa de produção (`npm run build`, 0 erros, 0 avisos)
 
+## Fase 11 — Polimento Técnico, Carrossel de Stack & Nitidez Tipográfica
+- [x] 11.1 Resolução do bug de hooks React (`useTransform` condicional) no alternador «Lume vivo / Lume brando» da Navbar
+- [x] 11.2 Unificação do hook `useAppMotion()` em todos os componentes para controlo global imediato
+- [x] 11.3 Hiperligação direta e destacada para o repositório GitHub no rodapé com `target="_blank"`
+- [x] 11.4 Criação do componente `TechStackCarousel` (infinite marquee a 60 FPS com links oficiais da stack)
+- [x] 11.5 Eliminação de desfoque de texto: remoção de filtros de blur e distorções 3D contínuas em `Hero.tsx` e `Agents.tsx`
+- [x] 11.6 Regras globais de antialiasing de fontes em `src/index.css` e reposicionamento do grão de papel no fundo (`z-0`)
+- [x] 11.7 Validação de compilação limpa (`npm run build`, 0 erros, 0 avisos)
+
 ---
 
 ## Prompts prontos (colar no Antigravity)

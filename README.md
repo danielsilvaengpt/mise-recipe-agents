@@ -77,6 +77,7 @@ A construção progrediu em etapas rigorosamente orquestradas e testadas em prod
 | **Fase 8** | **Abertura Cinemática «Bancada do Chef»** | Coreografia cinematográfica do `Hero`: feixe volumétrico de luz quente que segue o cursor, calha de latão com acoplamento mecânico, extrusão de papel térmico em câmara lenta e flutuação 3D contínua (±14°). |
 | **Fase 9** | **Tipografia de Luxo & Rebranding "Mise"** | Transição de marca para **Mise** (*mise en place*). Adoção da tríade tipográfica de topo: `Fraunces Variable` (serifa gastronómica), `Plus Jakarta Sans` (interface legível) e `Space Mono` (dados de talão). |
 | **Fase 10** | **Human Craft & Filosofia Anti-AI** | Purga de clichés sintéticos (zero `Sparkles`), textura tátil de papel com micro-grão SVG (`feTurbulence`), fita-crepe de cozinheiro (*masking tape*), anotações de margem manuscritas e controlo de animações «Lume vivo / Lume brando». |
+| **Fase 11** | **Polimento Técnico & Nitidez Tipográfica** | Resolução do ciclo de hooks no alternador da Navbar, hiperligação GitHub direta no rodapé, novo carrossel infinito da stack tecnológica (`TechStackCarousel`) e garantia de 100% de nitidez tipográfica (eliminação de filtros de blur e distorções 3D contínuas). |
 
 ---
 

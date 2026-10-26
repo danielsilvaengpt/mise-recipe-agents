@@ -57,35 +57,35 @@ Contraste mínimo AA em todos os pares texto/fundo. CTA: fundo `--tomato`, texto
 - **Navbar:** transparente, ganha fundo `--paper` com blur leve ao fazer scroll. Logo em Fraunces.
 
 ## 6. Secções (ordem)
-1. **Navbar**
-2. **Hero** — promessa + CTA + ticket de receita animado (digitação dos ingredientes, carimbos a aparecer)
-3. **Problema** — "Tens comida em casa e não sabes o que cozinhar"
-4. **Os 3 agentes** — fio tracejado, 3 cartões (Chef, Redator, Revisor)
-5. **Como funciona** — 3 passos (regista despensa → pede → recebe receita)
-6. **Despensa** — mockup da lista de alimentos com validade
-7. **Honestidade ingrediente** — "Disponível vs. em falta" (o diferenciador)
-8. **Pré-visualização da receita** — exemplo completo em Markdown estilizado
-9. **FAQ** — acordeão acessível
-10. **CTA final** + **Footer**
+1. **Navbar** — logotipo, navegação, seletor de tema e interruptor mestre «Lume vivo / Lume brando»
+2. **Hero** — promessa + CTA + ticket de receita com fita crepe de cozinheiro e extrusão mecânica cristalina
+3. **Carrossel da Stack Tecnológica** — infinite marquee contínuo a 60 FPS com 9 ferramentas e links oficiais
+4. **Problema** — "Tens comida em casa e não sabes o que cozinhar"
+5. **Os 3 agentes (Brigada)** — mesa de orquestração com 3 postos (Chef, Redator, Revisor) com tipografia horizontal pixel-perfect
+6. **Como funciona** — 3 passos (regista despensa → pede → recebe receita)
+7. **Despensa** — mockup da lista de alimentos com validade
+8. **Honestidade ingrediente** — "Disponível vs. em falta" (o diferenciador)
+9. **Pré-visualização da receita** — exemplo completo em Markdown com anotação manual de fogão
+10. **FAQ** — acordeão acessível
+11. **CTA final** + **Footer** (com link direto de código aberto para o GitHub)
 
-## 7. Movimento e Interatividade (Ecossistema Cinemático: Artesanal e Tecnológico)
+## 7. Movimento, Interatividade e Nitidez Tipográfica
+- **Regra de Ouro de Nitidez Tipográfica (Zero 3D Blur):**
+  - Textos de leitura nunca devem sofrer rotações 3D contínuas (`preserve-3d`, `rotateX/Y` agressivos) nem filtros de desfoque (`filter: blur(...)`).
+  - Fontes renderizadas com antialiasing subpixel nítido (`-webkit-font-smoothing: antialiased`, `text-rendering: optimizeLegibility`).
+  - Texturas analógicas de papel mantidas sempre no fundo (`z-0`) para não interferir na acuidade das letras.
 - **Hero — Abertura Cinemática «A Bancada Noturna do Chef»:**
   - Iluminação volumétrica de estúdio: foco dinâmico que projeta luz quente (`--saffron` / `--paper`) e profundidade de campo que reage ao cursor do rato.
-  - Coreografia sequencial de abertura:
-    1. Abertura do foco de luz suave sobre a bancada;
-    2. A calha metálica em latão e ferro forjado acopla com magnetismo visual;
-    3. A comanda de pedidos desenrola-se em câmara lenta com física de papel térmico, ondulando suavemente até assentar;
-    4. A tipografia da receita ganha vida com brilho especular de tinta fresca a secar no papel;
-    5. Os carimbos `DISPONÍVEL` e `EM FALTA` estampam com ressalto elástico e micro-ondas de sombra e partículas quentes;
-    6. Flutuação tridimensional contínua (*floating physics*): o ticket mantém uma respiração orgânica no espaço 3D, com inclinação de perspetiva de alta sensibilidade (±14°) e reflexo de brilho dinâmico (*glare*).
+  - Coreografia sequencial de abertura com extrusão mecânica suave e estável, assentando com tipografia perfeitamente horizontal e nítida.
   - Comando cinemático «↺ Rever Sequência» para acionar a experiência a qualquer momento.
-- **Pipeline dos Agentes — Mesa de Orquestração Cinematográfica 3D:**
-  - Bancada de comando em perspetiva 3D com iluminação de estúdio reativa ao cursor do rato (*dynamic spotlight* que projeta sombras quentes e reflexos nos postos de trabalho).
-  - A comanda de papel físico viaja por uma calha mecânica tridimensional entre as 3 estações de trabalho:
-    1. **Estação do Chef (A Forja de Ideias):** Entrada do pedido de rascunho. O Chef projeta e avalia duas propostas de receitas no ar, seleciona a vencedora e estampa-a com impacto elástico.
-    2. **Estação do Redator (A Máquina de Escrever de Precisão):** A comanda desliza para o posto do redator. Uma cabeça tipográfica desenha as doses e os 5 passos numerados com tinta progressiva que transita de fresca para seca.
-    3. **Estação do Revisor (O Scanner de Telemetria de Segurança):** Um scanner laser vertical verde-azeitona (`--olive`) varre a receita de cima a baixo. Painéis de telemetria laterais revelam dados de segurança alimentar em tempo real (*«Tempo [REALISTA]»*, *«Frango ≥ 74°C [SEGURO]»*, *«Alergénios [CONFIRMADOS]»*), rematado por um selo de segurança com onda de choque elástica.
-  - Controlo interactivo: o utilizador pode alternar entre as 3 estações manualmente através de um seletor táctil de postos ou deixar o ciclo fluir em ritmo cinemático contínuo.
+- **Carrossel da Stack Tecnológica (Infinite Marquee):**
+  - Loop contínuo a 60 FPS com desvanecimento lateral (*edge vignette fade*) ligando o ecossistema à documentação oficial.
+  - Pausa e renderização estática imediata quando em modo «Lume brando».
+- **A Brigada de Cozinha — Mesa de Orquestração com Tipografia Nítida:**
+  - 3 postos de trabalho coordenados por linha do tempo automática (5.5s) e controlo manual (Play/Pause).
+  - Transições puras entre estações sem distorções fracionárias ou rotações diagonais, garantindo leitura rápida e agradável.
+- **Controlo Mestre de Animações («Lume Vivo» vs. «Lume Brando»):**
+  - Alternador temático na Navbar ligado a `MotionContext`, comandando instantaneamente todas as secções da página.
 - **Despensa e Listas — Efeito Fita Adesiva / Etiqueta Destacada:**
   - As linhas da lista da despensa reagem ao hover com ligeira elevação elástica e efeito de etiqueta adesiva.
 - **Botões — Microinteração Magnética:**
