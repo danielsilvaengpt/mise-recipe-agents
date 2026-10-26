@@ -48,9 +48,6 @@ export const Agents: React.FC = () => {
       `radial-gradient(circle 320px at ${x}px ${y}px, rgba(233,168,59,0.25), transparent 70%)`
   );
 
-  const rotateX = useSpring(useTransform(mouseY, [0, 400], [4, -4]), springConfig);
-  const rotateY = useSpring(useTransform(mouseX, [0, 800], [-4, 4]), springConfig);
-
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (shouldReduceMotion) return;
     const rect = deckRef.current?.getBoundingClientRect();
@@ -132,11 +129,11 @@ export const Agents: React.FC = () => {
           </p>
         </div>
 
-        {/* --- A MESA DE ORQUESTRAÇÃO 3D (CINEMATOGRAPHIC RIG) --- */}
+        {/* --- A MESA DE ORQUESTRAÇÃO DA BRIGADA (ESTÁVEL E COM TEXTO NÍTIDO) --- */}
         <div
           ref={deckRef}
           onMouseMove={handleMouseMove}
-          className="relative bg-paper-2 border-1.5 border-line rounded-card shadow-warm overflow-hidden mb-12 p-6 md:p-10 [perspective:1200px]"
+          className="relative bg-paper-2 border-1.5 border-line rounded-card shadow-warm overflow-hidden mb-12 p-6 md:p-10"
         >
           {/* Dynamic Studio Spotlight Overlay */}
           {!shouldReduceMotion && (
@@ -213,24 +210,17 @@ export const Agents: React.FC = () => {
             </div>
           </div>
 
-          {/* Center 3D Action Stage */}
-          <motion.div
-            style={{
-              rotateX: shouldReduceMotion ? 0 : rotateX,
-              rotateY: shouldReduceMotion ? 0 : rotateY,
-              transformStyle: 'preserve-3d',
-            }}
-            className="py-8 md:py-12 relative z-20 min-h-[360px] flex items-center justify-center"
-          >
+          {/* Center Action Stage with Crisp Typography */}
+          <div className="py-8 md:py-12 relative z-20 min-h-[360px] flex items-center justify-center">
             <AnimatePresence mode="wait">
               {/* --- ESTAÇÃO 1: CHEF CRIATIVO (A Forja de Ideias) --- */}
               {activeStation === 0 && (
                 <motion.div
                   key="station-chef"
-                  initial={{ opacity: 0, scale: 0.95, y: 15 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95, y: -15 }}
-                  transition={{ duration: 0.4, ease: [0.2, 0.7, 0.2, 1] }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
                   className="w-full max-w-2xl"
                 >
                   <div className="text-center mb-6">
@@ -243,10 +233,10 @@ export const Agents: React.FC = () => {
                     </p>
                   </div>
 
-                  {/* 2 Competing Recipe Proposals in 3D */}
+                  {/* 2 Competing Recipe Proposals (Crisp & Horizontal for Legibility) */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* Proposal A (Winner) */}
-                    <div className="bg-paper border-2 border-tomato rounded-xl p-5 shadow-warm relative overflow-hidden transform sm:-rotate-1">
+                    <div className="bg-paper border-2 border-tomato rounded-xl p-5 shadow-warm relative overflow-hidden">
                       <div className="flex items-center justify-between mb-3">
                         <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-tomato text-paper font-bold">
                           PROPOSTA A · ESCOLHIDA
@@ -271,7 +261,7 @@ export const Agents: React.FC = () => {
                     </div>
 
                     {/* Proposal B (Discarded) */}
-                    <div className="bg-paper/70 border border-line rounded-xl p-5 shadow-xs relative opacity-75 transform sm:rotate-1">
+                    <div className="bg-paper border border-line rounded-xl p-5 shadow-xs relative opacity-75">
                       <div className="flex items-center justify-between mb-3">
                         <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-paper-2 border border-line text-ink-soft">
                           PROPOSTA B · DESCARTADA
@@ -305,10 +295,10 @@ export const Agents: React.FC = () => {
               {activeStation === 1 && (
                 <motion.div
                   key="station-redator"
-                  initial={{ opacity: 0, scale: 0.95, y: 15 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95, y: -15 }}
-                  transition={{ duration: 0.4, ease: [0.2, 0.7, 0.2, 1] }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
                   className="w-full max-w-2xl bg-paper border-1.5 border-line rounded-xl p-6 md:p-8 shadow-warm"
                 >
                   <div className="flex items-center justify-between pb-4 mb-4 border-b border-line">
@@ -362,10 +352,10 @@ export const Agents: React.FC = () => {
               {activeStation === 2 && (
                 <motion.div
                   key="station-revisor"
-                  initial={{ opacity: 0, scale: 0.95, y: 15 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95, y: -15 }}
-                  transition={{ duration: 0.4, ease: [0.2, 0.7, 0.2, 1] }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
                   className="w-full max-w-2xl bg-paper border-1.5 border-line rounded-xl p-6 md:p-8 shadow-warm relative overflow-hidden"
                 >
                   {/* Glowing Laser Scan Bar sweeping vertically */}
@@ -449,7 +439,7 @@ export const Agents: React.FC = () => {
                 </motion.div>
               )}
             </AnimatePresence>
-          </motion.div>
+          </div>
         </div>
 
         {/* --- OS 3 CARTÕES INFORMATIVOS DE AGENTES --- */}

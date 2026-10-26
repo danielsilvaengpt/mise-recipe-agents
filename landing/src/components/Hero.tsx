@@ -33,14 +33,10 @@ export const Hero: React.FC = () => {
       `radial-gradient(circle 520px at ${x}px ${y}px, rgba(233,168,59,0.22), transparent 75%)`
   );
 
-  // High-sensitivity 3D Perspective Tilt on the Ticket (±14°)
+  // Dynamic paper sheen / glare position tracking mouse
   const ticketMouseX = useMotionValue(0);
   const ticketMouseY = useMotionValue(0);
 
-  const rotateX = useSpring(useTransform(ticketMouseY, [-0.5, 0.5], [14, -14]), springConfig);
-  const rotateY = useSpring(useTransform(ticketMouseX, [-0.5, 0.5], [-14, 14]), springConfig);
-
-  // Dynamic paper sheen / glare position
   const glareX = useTransform(ticketMouseX, [-0.5, 0.5], ['5%', '95%']);
   const glareY = useTransform(ticketMouseY, [-0.5, 0.5], ['5%', '95%']);
 
@@ -95,23 +91,21 @@ export const Hero: React.FC = () => {
     },
   };
 
-  // Cinematic Slow-Motion Fluid Extrusion of the Docket
+  // Crisp Mechanical Extrusion of the Docket (No blur filters to ensure 100% sharp text)
   const ticketExtrusionVariants = {
     hidden: {
       opacity: 0,
-      y: shouldReduceMotion ? 0 : -80,
-      scaleY: shouldReduceMotion ? 1 : 0.75,
-      filter: shouldReduceMotion ? 'none' : 'blur(4px)',
+      y: shouldReduceMotion ? 0 : -50,
+      scaleY: shouldReduceMotion ? 1 : 0.9,
     },
     visible: {
       opacity: 1,
       y: 0,
       scaleY: 1,
-      filter: 'blur(0px)',
       transition: {
-        duration: shouldReduceMotion ? 0.1 : 0.95,
+        duration: shouldReduceMotion ? 0.1 : 0.75,
         ease: [0.16, 1, 0.3, 1] as const,
-        delay: shouldReduceMotion ? 0 : 0.2,
+        delay: shouldReduceMotion ? 0 : 0.1,
       },
     },
   };
@@ -236,27 +230,13 @@ export const Hero: React.FC = () => {
                 <div className="w-3.5 h-3.5 rounded-full bg-saffron border border-[#8C6420] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4),0_2px_4px_rgba(0,0,0,0.5)] transform -translate-y-0.5" />
               </motion.div>
 
-              {/* 3D Tilt Wrapper with Ambient Floating Physics */}
-              <motion.div
+              {/* Ticket Wrapper with Stable, Pixel-Perfect Typography (No 3D Blur) */}
+              <div
+                className="relative"
                 style={{
-                  rotateX: shouldReduceMotion ? 0 : rotateX,
-                  rotateY: shouldReduceMotion ? 0 : rotateY,
-                  transformStyle: 'preserve-3d',
+                  transform: 'translateZ(0)',
+                  backfaceVisibility: 'hidden',
                 }}
-                animate={
-                  shouldReduceMotion
-                    ? {}
-                    : {
-                        y: [0, -5, 0],
-                        rotateZ: [-0.8, -0.2, -0.8],
-                      }
-                }
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-                className="relative will-change-transform"
               >
                 {/* Thermal Printer Extrusion Motion Container */}
                 <motion.div
@@ -265,6 +245,10 @@ export const Hero: React.FC = () => {
                   initial="hidden"
                   animate="visible"
                   className="relative bg-paper-2 border-x-1.5 border-line shadow-warm overflow-hidden origin-top"
+                  style={{
+                    transform: 'translateZ(0)',
+                    backfaceVisibility: 'hidden',
+                  }}
                 >
                   {/* Dynamic Specular Sheen (Reflexo de luz no papel) */}
                   {!shouldReduceMotion && (
@@ -412,7 +396,7 @@ export const Hero: React.FC = () => {
                     </svg>
                   </div>
                 </motion.div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>

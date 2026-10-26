@@ -18,9 +18,9 @@ export const App: React.FC = () => {
   return (
     <MotionProvider>
       <div className="min-h-screen bg-paper text-ink flex flex-col font-jakarta selection:bg-saffron/30 selection:text-ink relative">
-        {/* Analog tactile paper grain texture overlay */}
+        {/* Analog tactile paper grain texture in the background (behind text for maximum sharpness) */}
         <div
-          className="pointer-events-none fixed inset-0 z-50 opacity-[0.032] dark:opacity-[0.045] mix-blend-multiply dark:mix-blend-screen select-none overflow-hidden"
+          className="pointer-events-none fixed inset-0 z-0 opacity-[0.02] dark:opacity-[0.035] select-none overflow-hidden"
           aria-hidden="true"
         >
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
