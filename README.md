@@ -126,6 +126,12 @@ npm run build
 
 ---
 
+### 💻 Link Vercel da landing Page
+ ``` 
+ link:  https://mise-recipe-agents.vercel.app/
+ ```
+---
+
 ## 🍳 Aplicação Python (`app/`)
 
 > *Secção reservada para a integração da aplicação central com CrewAI, FastAPI e Streamlit.*
