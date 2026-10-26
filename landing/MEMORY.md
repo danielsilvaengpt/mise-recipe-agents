@@ -7,14 +7,14 @@
 ---
 
 ## 1. Estado atual
-- **Fase atual:** Fase 10 concluída com sucesso. Human Craft & Eliminação de Clichés de IA (Anti-AI Polish) implementado.
+- **Fase atual:** Repositório GitHub [danielsilvaengpt/mise-recipe-agents](https://github.com/danielsilvaengpt/mise-recipe-agents) configurado em estrutura monorepo com `landing/` e `app/`. Commit e push concluídos.
 - **Última sessão:** 2026-10-26
 - **Build a passar?** Sim (`npm run build` gerou com 0 erros e 0 avisos)
 - **Servidor de dev:** `npm run dev -- --host` → http://localhost:5173
 - **Em curso / a meio de:** nada
 
 ## 2. Próximo passo
-1. Testar a experiência visual orgânica e tátil em http://localhost:5173.
+1. Adicionar o código Python (CrewAI, FastAPI, Streamlit) na pasta `app/`.
 2. Definir URL final da app Streamlit em produção (`VITE_APP_URL`) e preparar deploy (Vercel, Netlify ou GitHub Pages).
 
 ## 3. Feito (por fase)
