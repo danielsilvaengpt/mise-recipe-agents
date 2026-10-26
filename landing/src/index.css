@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #FBF6EC;
+  --paper-2: #F3EAD8;
+  --ink: #1E1B16;
+  --ink-soft: #5C5547;
+  --tomato: #D8432B;
+  --olive: #4F5D2F;
+  --saffron: #E9A83B;
+  --line: #D9CDB4;
+}
+
+.dark {
+  --paper: #17140F;
+  --paper-2: #211D16;
+  --ink: #F4ECDC;
+  --ink-soft: #B3A98F;
+  --tomato: #D8432B;
+  --olive: #6B7D41;
+  --saffron: #E9A83B;
+  --line: #3A3326;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--ink);
+    background-color: var(--paper);
+  }
+
+  /* Fluid typography */
+  h1 {
+    font-size: clamp(2.6rem, 6vw, 5.2rem);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+  }
+
+  h2 {
+    font-size: clamp(1.9rem, 4vw, 3.2rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+}
+
+/* Bordas picotadas do ticket de receita */
+.ticket-picotado-top {
+  background-image: radial-gradient(circle at 10px 0, transparent 6px, var(--paper) 7px);
+  background-size: 20px 20px;
+  background-repeat: repeat-x;
+}
+
+.ticket-picotado-bottom {
+  background-image: radial-gradient(circle at 10px 20px, transparent 6px, var(--paper) 7px);
+  background-size: 20px 20px;
+  background-repeat: repeat-x;
+}
