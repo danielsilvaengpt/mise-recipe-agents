@@ -41,6 +41,13 @@ export const Agents: React.FC = () => {
   const smoothMouseX = useSpring(mouseX, springConfig);
   const smoothMouseY = useSpring(mouseY, springConfig);
 
+  // Spotlight background transform declared unconditionally at top level
+  const spotlightBackground = useTransform(
+    [smoothMouseX, smoothMouseY],
+    ([x, y]) =>
+      `radial-gradient(circle 320px at ${x}px ${y}px, rgba(233,168,59,0.25), transparent 70%)`
+  );
+
   const rotateX = useSpring(useTransform(mouseY, [0, 400], [4, -4]), springConfig);
   const rotateY = useSpring(useTransform(mouseX, [0, 800], [-4, 4]), springConfig);
 
@@ -135,13 +142,7 @@ export const Agents: React.FC = () => {
           {!shouldReduceMotion && (
             <motion.div
               className="absolute inset-0 pointer-events-none z-10 opacity-35 dark:opacity-20"
-              style={{
-                background: useTransform(
-                  [smoothMouseX, smoothMouseY],
-                  ([x, y]) =>
-                    `radial-gradient(circle 320px at ${x}px ${y}px, rgba(233,168,59,0.25), transparent 70%)`
-                ),
-              }}
+              style={{ background: spotlightBackground }}
               aria-hidden="true"
             />
           )}

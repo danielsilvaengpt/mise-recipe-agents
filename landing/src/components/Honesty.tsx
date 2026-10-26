@@ -1,11 +1,12 @@
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useAppMotion } from '../context/MotionContext';
 import { content } from '../data/content';
 import { Stamp } from './Stamp';
 import { Check, AlertTriangle, Lightbulb } from 'lucide-react';
 
 export const Honesty: React.FC = () => {
-  const shouldReduceMotion = useReducedMotion();
+  const { shouldReduceMotion } = useAppMotion();
   const { honesty } = content;
 
   return (

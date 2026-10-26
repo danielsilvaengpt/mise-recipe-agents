@@ -26,6 +26,13 @@ export const Hero: React.FC = () => {
   const smoothMouseX = useSpring(mouseX, springConfig);
   const smoothMouseY = useSpring(mouseY, springConfig);
 
+  // Background glow transform declared at top level (unconditional hook)
+  const ambientGlowBackground = useTransform(
+    [smoothMouseX, smoothMouseY],
+    ([x, y]) =>
+      `radial-gradient(circle 520px at ${x}px ${y}px, rgba(233,168,59,0.22), transparent 75%)`
+  );
+
   // High-sensitivity 3D Perspective Tilt on the Ticket (±14°)
   const ticketMouseX = useMotionValue(0);
   const ticketMouseY = useMotionValue(0);
@@ -136,13 +143,7 @@ export const Hero: React.FC = () => {
       {!shouldReduceMotion && (
         <motion.div
           className="absolute inset-0 pointer-events-none z-0 opacity-40 dark:opacity-25"
-          style={{
-            background: useTransform(
-              [smoothMouseX, smoothMouseY],
-              ([x, y]) =>
-                `radial-gradient(circle 520px at ${x}px ${y}px, rgba(233,168,59,0.22), transparent 75%)`
-            ),
-          }}
+          style={{ background: ambientGlowBackground }}
           aria-hidden="true"
         />
       )}

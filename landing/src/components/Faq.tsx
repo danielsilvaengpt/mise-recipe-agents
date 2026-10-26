@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useAppMotion } from '../context/MotionContext';
 import { content } from '../data/content';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 
 export const Faq: React.FC = () => {
-  const shouldReduceMotion = useReducedMotion();
+  const { shouldReduceMotion } = useAppMotion();
   const { faq } = content;
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 

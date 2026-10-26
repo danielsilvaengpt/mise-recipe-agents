@@ -33,21 +33,34 @@ export const Footer: React.FC = () => {
             ))}
           </nav>
 
-          {/* Repo Link (if available) */}
+          {/* Repo Link */}
           <div>
             <a
               href={footer.repoUrl}
-              className="inline-flex items-center gap-2 text-xs font-mono hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron rounded-sm py-1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-full border border-line bg-paper-2 hover:bg-paper hover:text-tomato hover:border-tomato/40 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron shadow-2xs group"
+              title="Abrir repositório no GitHub numa nova janela"
             >
-              <Github className="w-4 h-4" />
-              <span>{footer.repoLinkText}</span>
+              <Github className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
+              <span className="font-semibold">GitHub: mise-recipe-agents</span>
+              <span className="text-[10px] opacity-60">↗</span>
             </a>
           </div>
         </div>
 
         {/* Bottom Attribution */}
-        <div className="pt-8 text-center text-xs font-mono text-ink-soft/80">
+        <div className="pt-8 text-center text-xs font-mono text-ink-soft/80 flex flex-col sm:flex-row items-center justify-center gap-2">
           <p>{footer.text}</p>
+          <span className="hidden sm:inline opacity-40">·</span>
+          <a
+            href={footer.repoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-tomato hover:underline underline-offset-4 font-medium"
+          >
+            Ver código aberto no GitHub ↗
+          </a>
         </div>
       </div>
     </footer>

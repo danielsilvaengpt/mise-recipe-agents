@@ -1,10 +1,11 @@
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useAppMotion } from '../context/MotionContext';
 import { content } from '../data/content';
 import { AlertCircle, HelpCircle } from 'lucide-react';
 
 export const Problem: React.FC = () => {
-  const shouldReduceMotion = useReducedMotion();
+  const { shouldReduceMotion } = useAppMotion();
   const { problem } = content;
 
   return (

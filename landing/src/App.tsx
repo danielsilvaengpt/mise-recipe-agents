@@ -2,6 +2,7 @@ import React from 'react';
 import { MotionProvider } from './context/MotionContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { TechStackCarousel } from './components/TechStackCarousel';
 import { Problem } from './components/Problem';
 import { Agents } from './components/Agents';
 import { HowItWorks } from './components/HowItWorks';
@@ -45,6 +46,7 @@ export const App: React.FC = () => {
         {/* Main Content */}
         <main id="main-content" className="flex-grow">
           <Hero />
+          <TechStackCarousel />
           <Problem />
           <Agents />
           <HowItWorks />

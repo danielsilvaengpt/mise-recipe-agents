@@ -1,11 +1,12 @@
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useAppMotion } from '../context/MotionContext';
 import { content } from '../data/content';
 import { Clock, Users, FileText, CheckCircle2 } from 'lucide-react';
 import { Stamp } from './Stamp';
 
 export const RecipePreview: React.FC = () => {
-  const shouldReduceMotion = useReducedMotion();
+  const { shouldReduceMotion } = useAppMotion();
   const { recipePreview } = content;
 
   return (

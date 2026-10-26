@@ -1,10 +1,11 @@
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useAppMotion } from '../context/MotionContext';
 import { content } from '../data/content';
 import { Check, Plus, Calendar, Tag, Layers } from 'lucide-react';
 
 export const Pantry: React.FC = () => {
-  const shouldReduceMotion = useReducedMotion();
+  const { shouldReduceMotion } = useAppMotion();
   const { pantry } = content;
 
   // Mockup data for pantry table (clearly illustrative)

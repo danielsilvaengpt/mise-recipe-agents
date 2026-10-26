@@ -1,11 +1,12 @@
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useAppMotion } from '../context/MotionContext';
 import { content } from '../data/content';
 import { Button } from './Button';
 import { UtensilsCrossed } from 'lucide-react';
 
 export const CtaFinal: React.FC = () => {
-  const shouldReduceMotion = useReducedMotion();
+  const { shouldReduceMotion } = useAppMotion();
   const { ctaFinal, appUrl } = content;
 
   return (
