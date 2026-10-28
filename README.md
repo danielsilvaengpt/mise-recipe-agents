@@ -127,12 +127,6 @@ npm run build
 
 ---
 
-### 💻 Link Vercel da landing Page
- ``` 
- link:  https://mise-recipe-agents.vercel.app/
- ```
----
-
 ## 🍳 Backend Python (`backend/`)
 
 API em **FastAPI** que orquestra uma brigada de 3 agentes **CrewAI** (Chef, Redator e Revisor) para criar receitas a partir da despensa do utilizador. O modelo de linguagem corre na **Groq** (`groq/openai/gpt-oss-120b`) e a despensa é guardada num ficheiro JSON.
