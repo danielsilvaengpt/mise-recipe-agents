@@ -71,7 +71,6 @@ uvicorn src.api.api:app --reload
 
 A documentação interativa da API fica disponível em [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs).
 
-O Streamlit apresenta o endereço local da aplicação no terminal, normalmente [http://localhost:8501](http://localhost:8501).
 
 ### Modo de linha de comandos
 
