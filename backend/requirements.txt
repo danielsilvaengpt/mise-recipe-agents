@@ -1,7 +1,6 @@
-crewai==1.15.28
+crewai[litellm]==1.15.28
 crewai-cli==1.15.28
 crewai-core==1.15.28
-litellm==1.106.2
 fastapi
 uvicorn[standard]
 requests
