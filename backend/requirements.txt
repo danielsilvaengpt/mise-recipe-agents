@@ -6,3 +6,4 @@ fastapi
 uvicorn[standard]
 requests
 python-dotenv
+mcp-types==2.3.0
