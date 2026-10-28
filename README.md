@@ -238,7 +238,43 @@ A validade tem de estar no formato `AAAA-MM-DD` e a quantidade tem de ser maior 
 
 > Em Linux/macOS os nomes de pastas são sensíveis a maiúsculas: mantêm-se `Crew/` e `Repositories/` tal como estão nos imports.
 ---
+## ▶️ Como Correr o Projeto Completo
 
+Para experimentar tudo localmente, abre **dois terminais** (duas linhas de comandos) em paralelo, um para a landing page e outro para a API.
+
+```mermaid
+flowchart TB
+    subgraph T1["🖥️ Terminal 1 — Landing Page"]
+        direction TB
+        A1["cd landing"] --> A2["npm install"]
+        A2 --> A3["npm run dev"]
+    end
+
+    subgraph T2["🖥️ Terminal 2 — API (Backend)"]
+        direction TB
+        B1["cd backend"] --> B2["python -m venv .venv<br/>ativar o ambiente virtual"]
+        B2 --> B3["python -m pip install -r requirements.txt"]
+        B3 --> B4["criar .env com a GROQ_API_KEY"]
+        B4 --> B5["python -m uvicorn src.api.api:app --reload"]
+    end
+
+    A3 --> L["🌐 Landing Page<br/>http://localhost:5173"]
+    B5 --> P["⚙️ API FastAPI<br/>http://127.0.0.1:8000"]
+    P --> D["📘 Documentação Swagger<br/>http://127.0.0.1:8000/docs"]
+```
+
+| | Terminal 1 — Landing | Terminal 2 — API |
+|:--|:--|:--|
+| **Pasta** | `landing/` | `backend/` |
+| **Instalar** | `npm install` | `python -m pip install -r requirements.txt` |
+| **Arrancar** | `npm run dev` | `python -m uvicorn src.api.api:app --reload` |
+| **Endereço** | http://localhost:5173 | http://127.0.0.1:8000/docs |
+
+> 💡 Deixa os dois terminais abertos enquanto testas. Para parar cada um, usa `Ctrl + C`.
+> O endereço da landing é o habitual do Vite; se a porta 5173 estiver ocupada, o terminal mostra o endereço real.
+> Os passos detalhados da API (ambiente virtual, `.env`, endpoints) estão na secção **Backend Python** abaixo.
+
+------
 
 ## 👤 Autor
 
