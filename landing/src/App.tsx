@@ -1,67 +1,47 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { MotionProvider } from './context/MotionContext';
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { TechStackCarousel } from './components/TechStackCarousel';
-import { Problem } from './components/Problem';
-import { Agents } from './components/Agents';
-import { HowItWorks } from './components/HowItWorks';
-import { Pantry } from './components/Pantry';
-import { Honesty } from './components/Honesty';
-import { RecipePreview } from './components/RecipePreview';
-import { Safety } from './components/Safety';
-import { Faq } from './components/Faq';
-import { CtaFinal } from './components/CtaFinal';
-import { Footer } from './components/Footer';
+import { AppProvider } from './context/AppContext';
+import { LandingPage } from './components/landing/LandingPage';
+import { AppLayout } from './components/app/AppLayout';
+import { ChatView } from './components/app/ChatView';
+import { PantryView } from './components/app/PantryView';
+import { HistoryView } from './components/app/HistoryView';
 
 export const App: React.FC = () => {
   return (
     <MotionProvider>
-      <div className="min-h-screen bg-paper text-ink flex flex-col font-jakarta selection:bg-saffron/30 selection:text-ink relative">
-        {/* Analog tactile paper grain texture in the background (behind text for maximum sharpness) */}
-        <div
-          className="pointer-events-none fixed inset-0 z-0 opacity-[0.02] dark:opacity-[0.035] select-none overflow-hidden"
-          aria-hidden="true"
-        >
-          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <filter id="paper-grain">
-              <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" />
-              <feColorMatrix type="matrix" values="0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 1 0" />
-            </filter>
-            <rect width="100%" height="100%" filter="url(#paper-grain)" />
-          </svg>
+      <AppProvider>
+        <BrowserRouter>
+        <div className="min-h-screen bg-paper text-ink flex flex-col font-jakarta selection:bg-saffron/30 selection:text-ink relative">
+          {/* Skip to content link for accessibility */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-tomato focus:text-paper focus:rounded-md focus:shadow-md focus:outline-none"
+          >
+            Saltar para o conteúdo principal
+          </a>
+
+          <Routes>
+            {/* Landing Page (Preserved 100% from V1) */}
+            <Route path="/" element={<LandingPage />} />
+
+            {/* Web App (V2) */}
+            <Route path="/app" element={<AppLayout />}>
+              <Route index element={<Navigate to="/app/fogao" replace />} />
+              <Route path="fogao" element={<ChatView />} />
+              <Route path="despensa" element={<PantryView />} />
+              <Route path="livro" element={<HistoryView />} />
+              <Route path="*" element={<Navigate to="/app/fogao" replace />} />
+            </Route>
+
+            {/* Catch-all redirect */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
         </div>
-
-        {/* Skip to content link for accessibility */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-tomato focus:text-paper focus:rounded-md focus:shadow-md focus:outline-none"
-        >
-          Saltar para o conteúdo principal
-        </a>
-
-        {/* Navigation */}
-        <Navbar />
-
-        {/* Main Content */}
-        <main id="main-content" className="flex-grow">
-          <Hero />
-          <TechStackCarousel />
-          <Problem />
-          <Agents />
-          <HowItWorks />
-          <Pantry />
-          <Honesty />
-          <RecipePreview />
-          <Safety />
-          <Faq />
-          <CtaFinal />
-        </main>
-
-        {/* Footer */}
-        <Footer />
-      </div>
-    </MotionProvider>
+      </BrowserRouter>
+    </AppProvider>
+  </MotionProvider>
   );
 };
 

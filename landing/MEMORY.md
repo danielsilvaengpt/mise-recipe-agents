@@ -1,4 +1,4 @@
-# MEMORY.md — Memória do projeto (landing Mise)
+# MEMORY.md — Memória do projeto Mise (V1 Landing + V2 Web App)
 
 > **Para o agente:** este ficheiro é a tua memória entre sessões. Não te lembras de conversas anteriores,
 > só disto. **Lê-o no início de cada sessão** (depois de `CLAUDE.md`) e **atualiza-o no fim de cada fase
@@ -7,18 +7,26 @@
 ---
 
 ## 1. Estado atual
-- **Fase atual:** Repositório GitHub [danielsilvaengpt/mise-recipe-agents](https://github.com/danielsilvaengpt/mise-recipe-agents) configurado em estrutura monorepo com `landing/` e `app/`. Commit e push concluídos.
-- **Última sessão:** 2026-10-26
-- **Build a passar?** Sim (`npm run build` gerou com 0 erros e 0 avisos)
+- **Fase atual:** Fase V2.3 Concluída com sucesso. Módulo do Fogão operacional (`ChatView.tsx`, `RecipeTicket.tsx`), orquestração sequencial dos 3 agentes (Chef → Redator → Revisor) durante o `POST /ask`, comanda gastronómica térmica com botões de cópia e impressão, e compilação limpa.
+- **Última sessão:** 2026-10-28
+- **Build a passar?** Sim (`npm run build` na pasta `landing` gerou com 0 erros e 0 avisos)
 - **Servidor de dev:** `npm run dev -- --host` → http://localhost:5173
-- **Em curso / a meio de:** nada
+- **Em curso / a meio de:** Piloto automático `/auto` a avançar para a **Fase V2.4** (Módulo do Livro de Receitas / Histórico).
 
 ## 2. Próximo passo
-1. Adicionar o código Python (CrewAI, FastAPI, Streamlit) na pasta `app/`.
-2. Definir URL final da app Streamlit em produção (`VITE_APP_URL`) e preparar deploy (Vercel, Netlify ou GitHub Pages).
+1. Executar a **Fase V2.4**: Módulo do Livro de Receitas (`HistoryView.tsx` consumindo `GET /receitas` e `GET /receitas/{ficheiro}`, grelha de fichas arquivadas, modal de leitura completa da comanda).
+2. Seguir para a **Fase V2.5**: Polimento Tátil, Notificações, Acessibilidade e Auditoria Final.
 
 ## 3. Feito (por fase)
-- `[Fase 0]` Setup completo com Vite + React 19 + TypeScript + Tailwind CSS + Framer Motion + lucide-react. Tokens de cor e tipografia (`Fraunces`, `Inter`, `JetBrains Mono`) com variáveis CSS em `src/index.css` e suporte a modo claro/escuro. Metatags SEO e Open Graph em `index.html`. Base de dados tipada de textos em `src/data/content.ts` e `.env.example`.
+- `[Fase V2.3]` Módulo do Fogão (Chat Interativo & Comanda de Receita): Implementação de `ChatView.tsx` com histórico persistente em `localStorage`, atalhos de sugestões de pedidos e loading cinemático da brigada (Chef, Redator, Revisor). Componente `RecipeTicket.tsx` com renderização de Markdown (`react-markdown` + `remark-gfm`), carimbos aprovados, tabelas estilizadas, passos numerados, ações de cópia para a área de transferência e impressão de comanda. Build limpo com 0 erros.
+- `[Fase V2.2]` Módulo da Despensa Digital (CRUD de Alimentos): Implementação de `PantryView.tsx` com grelha de mantimentos, métricas de inventário, pesquisa em tempo real e filtros (Todos, Urgentes, Frescos). Cartões de alimento `FoodCard.tsx` com acabamento de fita adesiva, badges cromáticos de validade (>7d verde, 2-7d açafrão, ≤2d tomate) e ajuste imediato de quantidade `+`/`−`. Modal de criação `AddFoodModal.tsx` com validação estrita e feedback por toast. Build limpo com 0 erros.
+- `[Fase V2.1]` Conector da API do Backend (FastAPI) & Estado da Cozinha: Configuração de `CORSMiddleware` no backend FastAPI. Tipagem completa em `types.ts` (`Alimento`, `AskRequest`, `AskResponse`, `ReceitaItem`, `ReceitaDetalhe`). Cliente HTTP em `client.ts` ligado aos endpoints reais `/ask`, `/alimentos` e `/receitas`. Contexto global `AppContext.tsx` gerindo dados reativos e notificações táteis de toast. Build limpo com 0 erros.
+- `[Fase V2.0]` Roteamento e Infraestrutura da Web App: Instalação de `react-router-dom`, `react-markdown` e `remark-gfm`. Extração de `LandingPage.tsx`, criação de `AppLayout.tsx` com navegação de atelier gastronómico, tabs para O Fogão, A Despensa e O Livro, pílula de estado do backend em tempo real e vistas base. Todos os botões "Experimentar" da landing redirecionam agora internamente para `/app`. Compilação aprovada com 0 erros.
+- `[V2 - Planeamento]` Arquivo da V1 em `.Claude V1/`. Criação da especificação integral da V2: `CLAUDE.md` (regras e API), `DESIGN.md` (conceito "A Bancada de Trabalho do Chef", anti-IA, tokens e telas), `CONTENT.md` (textos em PT-PT do Fogão, Despensa e Histórico), `TASKS.md` (Fases V2.0 a V2.5) e `COMANDOS.md` (especificação de `/phase <N>`, `/new <desc>` e `/auto`).
+- `[Fase 11]` Polimento Técnico, Carrossel de Stack Tecnológica & Nitidez Tipográfica.
+- `[Fase 10]` Human Craft & Anti-AI Polish (textura de papel analógico, fita crepe de chef, eliminação de sparkles e marginalia).
+- `[Fase 9]` Tipografia Sistema 1 (Fraunces + Plus Jakarta Sans + Space Mono) e rebranding para Mise.
+- `[Fase 8]` Abertura Cinemática do Hero («A Bancada Noturna do Chef»), iluminação volumétrica, acoplamento de calha e flutuação 3D.
 - `[Fase 1]` Componentes base e Hero: `Button` (primário e secundário com foco visível e microinterações de hover), `Stamp` (carimbos com rotação -3°, borda dupla e animação de batimento), `Navbar` (translúcida/blur ao scroll, navegação mobile acessível, alternador claro/escuro) e `Hero` com grelha assimétrica e ticket de receita animado ("caderno de tasca") respeitando `prefers-reduced-motion`.
 - `[Fase 2]` Secções narrativas implementadas: `Problem` (narrativa do problema e visualização dos ingredientes de exemplo do quotidiano), `Agents` (3 cartões de agentes com pipeline sequencial e fio tracejado SVG animado com o scroll) e `HowItWorks` (3 passos simples do frigorífico ao prato com numeração mono expressiva).
 - `[Fase 3]` Secções de produto implementadas: `Pantry` (mockup visual da despensa digital com ordenação e adição), `Honesty` (comparação clara de alimentos disponíveis vs. em falta com carimbos e regra dos básicos), `RecipePreview` (receita completa em Markdown estilizado devidamente rotulado como "Exemplo ilustrativo" com passos numerados) e `Safety` (garantia de validação de temperaturas seguras, restrições e doses).
@@ -55,7 +63,9 @@
   - Eliminação total do desfoque de texto: remoção de filtros de blur e distorções 3D contínuas em `Hero.tsx` e `Agents.tsx`, com antialiasing subpixel nítido (`text-rendering: optimizeLegibility`).
 
 ## 4. Decisões tomadas
-- Stack: Vite + React + TypeScript + Tailwind + Framer Motion + lucide-react — site estático, separado da app Streamlit.
+- Stack: Vite + React + TypeScript + Tailwind + Framer Motion + lucide-react.
+- 2026-10-28 (V2): **Comando `/auto` (Piloto Automático):** Criado comando para execução autónoma e sequencial de todas as fases de implementação, com autorização prévia de comandos no terminal, atualização mandatória de todos os ficheiros `.md` a cada fase e isolamento estrito de segurança à pasta do projeto (`c:\Users\danie\Desktop\mise-recipe-agents`).
+- 2026-10-28 (V2): **Ligação Estrita ao Backend FastAPI:** A Web App é puramente um cliente frontend. Não cria lógica nem dados em memória simulada; quando o backend FastAPI (`backend/src/api/api.py`) for iniciado na porta 8000, a Web App liga-se diretamente a ele via cliente HTTP tipado (`/ask`, `/alimentos`, `/receitas`). Se o backend estiver desligado, a interface exibe um aviso claro com o comando de inicialização.
 - Conceito visual: "caderno de tasca + mesa de comando de IA" (ver `DESIGN.md`).
 - Textos só de `CONTENT.md`, via `src/data/content.ts`.
 - URL da app só via `VITE_APP_URL`.
@@ -81,6 +91,11 @@
 
 | Data | Resumo | Estado do build |
 |---|---|---|
+| 2026-10-28 | Conclusão da Fase V2.3: Módulo do Fogão (ChatView, RecipeTicket com react-markdown, comanda e impressão) | Passou (0 erros) |
+| 2026-10-28 | Conclusão da Fase V2.2: Despensa Digital CRUD (PantryView, FoodCard, AddFoodModal, filtros e PATCH/DELETE) | Passou (0 erros) |
+| 2026-10-28 | Conclusão da Fase V2.1: Conector tipado FastAPI (client.ts), CORS no backend, AppContext e toasts | Passou (0 erros) |
+| 2026-10-28 | Conclusão da Fase V2.0: Roteamento React Router (/ e /app/*), AppLayout gastronómico, botões conectados e build limpo | Passou (0 erros) |
+| 2026-10-28 | Planeamento da V2: Especificação da Web App com ligação direta ao backend FastAPI (`/ask`, `/alimentos`, `/receitas`) | Passou (0 erros) |
 | 2026-10-26 | Conclusão da Fase 11: Polimento Técnico, Carrossel de Stack Tecnológica & Nitidez Tipográfica | Passou (0 erros) |
 | 2026-10-26 | Conclusão da Fase 10: Human Craft & Anti-AI Polish (textura de papel analógico, fita crepe de chef, eliminação de sparkles e marginalia) | Passou (0 erros) |
 | 2026-10-26 | Conclusão da Fase 9: Tipografia Sistema 1 (Fraunces + Plus Jakarta Sans + Space Mono) e rebranding para Mise | Passou (0 erros) |

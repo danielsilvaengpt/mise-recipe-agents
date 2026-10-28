@@ -190,7 +190,7 @@ export const Hero: React.FC = () => {
               variants={itemVariants}
               className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-6"
             >
-              <Button href={appUrl} external variant="primary" icon magnetic>
+              <Button href={appUrl} variant="primary" icon magnetic>
                 {hero.primaryCta}
               </Button>
               <Button href="#como-funciona" variant="secondary">

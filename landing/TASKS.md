@@ -1,117 +1,93 @@
-# TASKS.md — Plano de construção (para o agente)
+# TASKS.md — Plano de Implementação da Versão 2 (Web App Mise)
 
-Executa **uma fase de cada vez**. No fim de cada fase: `npm run build`, mostra o que mudou e espera confirmação.
-Antes de começar, lê `CLAUDE.md`, `DESIGN.md` e `CONTENT.md`.
-
-## Fase 0 — Setup
-- [x] `npm create vite@latest landing -- --template react-ts`
-- [x] Instalar: `tailwindcss`, `framer-motion`, `lucide-react`
-- [x] Configurar tokens de cor/fonte do `DESIGN.md` no Tailwind e em `index.css` (variáveis CSS + modo escuro)
-- [x] Fontes: Fraunces, Inter, JetBrains Mono (Google Fonts, `display=swap`)
-- [x] `index.html`: `lang="pt-PT"`, title, meta description, Open Graph
-- [x] `src/data/content.ts` com todos os textos de `CONTENT.md`
-- [x] `.env.example` com `VITE_APP_URL=`
-
-## Fase 1 — Base e Hero
-- [x] Navbar (sticky, muda ao scroll, menu mobile acessível)
-- [x] Hero com ticket de receita animado (carimbos DISPONÍVEL / EM FALTA)
-- [x] Botões primário/secundário e componente `Stamp`
-
-## Fase 2 — Narrativa
-- [x] Secção Problema
-- [x] Secção Agentes com fio tracejado que se desenha no scroll
-- [x] Secção Como funciona (3 passos)
-
-## Fase 3 — Produto
-- [x] Mockup da Despensa (HTML/CSS, dados fictícios claramente ilustrativos)
-- [x] Secção "Se faltar, dizemos-te" (tabela disponível vs. em falta)
-- [x] Pré-visualização de receita ("Exemplo ilustrativo")
-- [x] Secção Segurança
-
-## Fase 4 — Fecho
-- [x] FAQ em acordeão acessível (teclado + `aria-expanded`)
-- [x] CTA final e Footer
-- [x] Favicon + OG image
-
-## Fase 5 — Qualidade
-- [x] Revisão responsiva (375 / 768 / 1280 / 1536)
-- [x] `prefers-reduced-motion` respeitado
-- [x] Contraste AA, foco visível, navegação por teclado
-- [x] Lighthouse / Boas práticas (HTML semântico, swap de fontes, zero erros de compilação)
-- [x] Verificar que não há texto/número inventado
-
-## Fase 6 — Animações Avançadas e Interatividade Tátil (Ideia 3)
-- [x] 6.1 Componente `MagneticButton` ou envolvente magnética para o botão primário (`Button.tsx`)
-- [x] 6.2 Tilt 3D interativo com física de mola no Ticket do Hero (`useMotionValue`, `useSpring`, `rotateX`, `rotateY`)
-- [x] 6.3 Efeito de saída mecânica de impressora de pedidos e revelação progressiva dos ingredientes no Hero
-- [x] 6.4 Fio dos Agentes com pulso luminoso de dados a percorrer continuamente o traçado SVG
-- [x] 6.5 Microinterações de elevação elástica tátil ("fita de etiqueta") na Despensa e Receita
-- [x] 6.6 Teste de performance a 60fps, compilação de produção (`npm run build`) e respeito por `prefers-reduced-motion`
-
-## Fase 7 — Mesa de Orquestração Cinematográfica 3D nos Agentes (Conceito 1)
-- [x] 7.1 Estrutura da Mesa de Orquestração 3D com iluminação de estúdio reativa ao cursor (*dynamic spotlight*) em `src/components/Agents.tsx`
-- [x] 7.2 Seletor tátil de postos / estações de trabalho (Chef → Redator → Revisor) com reprodução automática e controlo manual
-- [x] 7.3 Estação 1 (Chef): Animação de projeção de duas receitas e seleção carimbada da melhor proposta
-- [x] 7.4 Estação 2 (Redator): Redação tipográfica progressiva de quantidades e passos da receita
-- [x] 7.5 Estação 3 (Revisor): Scanner laser vertical verde-azeitona e painel de telemetria de segurança alimentar (*temperaturas, tempos e restrições*) com carimbo de aprovação
-- [x] 7.6 Validação responsiva, respeito integral por `prefers-reduced-motion` e compilação limpa (`npm run build`)
-
-## Fase 8 — Abertura Cinemática do Hero («A Bancada Noturna do Chef»)
-- [x] 8.1 Iluminação de estúdio volumétrica com gradiente de foco cinemático dinâmico no Hero
-- [x] 8.2 Animação coreografada da calha de pedidos em latão/ferro com acoplamento mecânico suave
-- [x] 8.3 Extrusão da comanda em câmara lenta com física de ondulação de papel térmico
-- [x] 8.4 Revelação tipográfica em brilho especular de tinta a secar
-- [x] 8.5 Impacto dos carimbos com ressalto elástico, sombras dinâmicas e partículas de calor
-- [x] 8.6 Flutuação 3D contínua (*floating physics*), tilt ampliado a ±14° e botão «↺ Rever Sequência»
-- [x] 8.7 Validação de compilação de produção (`npm run build`) e respeito por `prefers-reduced-motion`
-
-## Fase 9 — Tipografia Sistema 1 e Rebranding para "Mise"
-- [x] 9.1 Atualização de fontes Google Fonts em `index.html`: Fraunces + Plus Jakarta Sans + Space Mono
-- [x] 9.2 Reconfiguração dos tokens de tipografia em `tailwind.config.js` (`jakarta`, `mono: 'Space Mono'`) e `src/index.css`
-- [x] 9.3 Substituição global da classe base para `font-jakarta` em `src/App.tsx`
-- [x] 9.4 Rebranding integral para "Mise" (Navbar, Footer, SEO titles, metadados Open Graph e `CONTENT.md`)
-- [x] 9.5 Novo favicon SVG com o monograma "M" em serifa editorial Fraunces
-- [x] 9.6 Validação de compilação de produção (`npm run build` limpo, 0 erros e 0 avisos)
-
-## Fase 10 — Human Craft & Eliminação de Clichés de IA (Anti-AI Polish)
-- [x] 10.1 Purgar todos os ícones `Sparkles` e substituí-los por artefactos reais da gastronomia e atelier
-- [x] 10.2 Adicionar textura tátil de papel com micro-grão SVG (`feTurbulence`) orgânico em overlay fixo
-- [x] 10.3 Adicionar fita adesiva crepe de cozinheiro (*chef masking tape*) no ticket da comanda
-- [x] 10.4 Alternador de animações temático na Navbar: «Lume vivo» vs. «Lume brando» com ícone de chama (`Flame`)
-- [x] 10.5 Transição de vocabulário mecânico para terminologia da Brigada de Cozinha ("Ordem de Brigada", "Mise en place")
-- [x] 10.6 Carimbos com textura física de borracha desgastada e micro-anotações à margem
-- [x] 10.7 Compilação limpa de produção (`npm run build`, 0 erros, 0 avisos)
-
-## Fase 11 — Polimento Técnico, Carrossel de Stack & Nitidez Tipográfica
-- [x] 11.1 Resolução do bug de hooks React (`useTransform` condicional) no alternador «Lume vivo / Lume brando» da Navbar
-- [x] 11.2 Unificação do hook `useAppMotion()` em todos os componentes para controlo global imediato
-- [x] 11.3 Hiperligação direta e destacada para o repositório GitHub no rodapé com `target="_blank"`
-- [x] 11.4 Criação do componente `TechStackCarousel` (infinite marquee a 60 FPS com links oficiais da stack)
-- [x] 11.5 Eliminação de desfoque de texto: remoção de filtros de blur e distorções 3D contínuas em `Hero.tsx` e `Agents.tsx`
-- [x] 11.6 Regras globais de antialiasing de fontes em `src/index.css` e reposicionamento do grão de papel no fundo (`z-0`)
-- [x] 11.7 Validação de compilação limpa (`npm run build`, 0 erros, 0 avisos)
+> **Instruções para o Agente:** Executa rigorosamente **uma fase de cada vez**.
+> Ao receber o comando `/phase <N>`, consulta a fase respetiva neste documento, executa todas as tarefas, testa a compilação com `npm run build` e atualiza as caixas `[ ]` para `[x]`, registando também o progresso no `MEMORY.md`.
 
 ---
 
-## Prompts prontos (colar no Antigravity)
+## Fase V2.0 — Roteamento & Infraestrutura da Web App
+- [x] Instalar o pacote de roteamento `react-router-dom` e o leitor de Markdown `react-markdown` (e plugins auxiliares como `remark-gfm`).
+- [x] Configurar o roteamento principal em `src/App.tsx`:
+  - Rota raiz `/`: Apresentação completa da Landing Page (V1 preservada a 100%).
+  - Rota da aplicação `/app`: Redirecionamento e layout mestre da Web App (`AppLayout.tsx`).
+  - Sub-rotas da aplicação: `/app/fogao` (Chat), `/app/despensa` (CRUD de alimentos) e `/app/livro` (Histórico).
+- [x] Ligar todos os botões de ação da Landing Page (`Navbar`, `Hero`, `CtaFinal`) para navegar diretamente para a rota `/app`.
+- [x] Construir o componente `AppLayout.tsx`:
+  - Barra de navegação superior e/ou lateral da cozinha com logótipo, link de regresso à Landing Page, abas de navegação (O Fogão, A Despensa, O Livro) e alternadores de tema e «Lume vivo / Lume brando».
+- [x] Assegurar compilação limpa com `npm run build` (0 erros).
 
-**Prompt inicial**
-> Lê `CLAUDE.md`, `MEMORY.md`, `DESIGN.md`, `CONTENT.md` e `TASKS.md`. Cria um plano e executa apenas a Fase 0 e Fase 1.
-> No fim, corre o build, atualiza o `MEMORY.md` e diz-me o que fizeste. Não avances sem eu confirmar.
+---
 
-**Prompt para retomar (nova sessão)**
-> Lê `CLAUDE.md` e `MEMORY.md`. Resume em 2 linhas onde ficámos e qual é o próximo passo.
-> Depois continua a partir daí e atualiza o `MEMORY.md` no fim.
+## Fase V2.1 — Conector da API do Backend (FastAPI) & Estado da Cozinha
+- [x] Configurar a comunicação com o backend em `src/api/config.ts`:
+  - Definir URL base (`VITE_API_URL` com valor por defeito `http://localhost:8000`).
+  - Configurar proxy de desenvolvimento no `vite.config.ts` (reencaminhando `/api` para `http://localhost:8000`) ou preparar cabeçalhos para chamada direta.
+  - Se necessário, configurar `CORSMiddleware` no backend FastAPI (`backend/src/api/api.py`) para permitir requisições a partir do frontend.
+- [x] Criar o cliente HTTP tipado em `src/api/client.ts` com funções que invocam diretamente a API FastAPI:
+  - `POST /ask` (`{ question: string }` → `{ answer: string }`) — aciona a orquestração real do CrewAI.
+  - `GET /alimentos` — lê os alimentos reais guardados no repositório do backend.
+  - `POST /alimentos` — cria um novo alimento validado pelo Pydantic do backend.
+  - `DELETE /alimentos?nome={nome}` — remove o alimento no repositório do backend.
+  - `PATCH /alimentos/quantidade?nome={nome}` — ajusta a quantidade no backend.
+  - `GET /receitas` — lista os ficheiros `.md` reais existentes na pasta `outputs/` do backend.
+  - `GET /receitas/{ficheiro}` — obtém o texto integral do ficheiro `.md`.
+- [x] Implementar verificação de estado em tempo real da API (`healthCheck` via `GET /`):
+  - Criar componente visual de estado (`ApiStatusIndicator.tsx`) indicando «Backend Ligado» (verde) ou «Backend Desligado» (âmbar com instrução para iniciar o Uvicorn).
+- [x] Criar o contexto global `src/context/AppContext.tsx` que centraliza as chamadas ao cliente da API, atualiza o inventário da despensa e gere as mensagens e receitas ativas.
+- [x] Assegurar compilação limpa com `npm run build` (0 erros).
 
-**Prompt para fechar a sessão**
-> Atualiza o `MEMORY.md`: estado atual, o que foi feito, decisões novas, problemas abertos e os próximos 1–3 passos.
+---
 
-**Para elevar o design**
-> Revê o Hero como um diretor de arte. Está genérico? Propõe 3 melhorias concretas fiéis ao conceito
-> "caderno de tasca + mesa de comando" do `DESIGN.md` e implementa a melhor.
+## Fase V2.2 — Módulo da Despensa Digital (CRUD de Alimentos)
+- [x] Criar a visão `src/components/app/PantryView.tsx`:
+  - Cabeçalho com métricas da despensa e botão magnético `+ Registar Novo Ingrediente`.
+  - Filtros rápidos de visualização (Todos, Consumo Urgente, Prazo Normal).
+- [x] Desenvolver o cartão de ingrediente individual (`FoodCard.tsx`):
+  - Estética de frasco/etiqueta com fita crepe rasgada nos cantos.
+  - Indicadores cromáticos de validade baseados na data:
+    - 🟢 Verde-azeitona: > 7 dias de validade.
+    - 🟡 Açafrão: entre 2 e 7 dias.
+    - 🔴 Tomate: ≤ 1 dia ou caducado.
+  - Controlos táteis de quantidade `−` e `+` com chamada automática ao endpoint `PATCH /alimentos/quantidade`.
+  - Botão de remoção com diálogo de confirmação amigável e acionamento de `DELETE /alimentos`.
+- [x] Construir o modal `src/components/app/AddFoodModal.tsx`:
+  - Formulário com validação em tempo real (Nome, Quantidade, Unidade com dropdown gastronómico, Restrições e Calendário).
+  - Submissão com `POST /alimentos` e feedback imediato por notificação toast.
+- [x] Assegurar compilação limpa com `npm run build` (0 erros).
 
-**Para polir**
-> Faz uma auditoria de acessibilidade e performance. Lista problemas por gravidade e corrige-os.
+---
 
-**Para validar honestidade**
-> Procura em todo o código textos que não estejam em `CONTENT.md` ou números/depoimentos inventados e remove-os.
+## Fase V2.3 — Módulo do Fogão (Chat Interativo & Comanda de Receita)
+- [x] Criar a visão `src/components/app/ChatView.tsx`:
+  - Ecrã inicial com saudações da brigada e atalhos rápidos clicáveis para pedidos comuns.
+  - Caixa de entrada estilizada na bancada de trabalho com envio via botão ou tecla `Enter`.
+- [x] Implementar a animação cinemática de orquestração da brigada durante o carregamento (`POST /ask`):
+  - Passos visuais sincronizados: 1. Chef Criativo → 2. Redator de Receitas → 3. Revisor de Segurança.
+- [x] Desenvolver o componente `src/components/app/RecipeTicket.tsx`:
+  - Renderização da resposta Markdown com estética de comanda/ticket de restaurante.
+  - Tabela visual de honestidade com carimbos `DISPONÍVEL NA DESPENSA` e `EM FALTA`.
+  - Passos numerados em `Space Mono`.
+  - Ações no rodapé do ticket: botão de copiar para o clipboard e botão de impressão de comanda.
+- [x] Assegurar compilação limpa com `npm run build` (0 erros).
+
+---
+
+## Fase V2.4 — Módulo do Livro de Receitas (Histórico Arquivado)
+- [ ] Criar a visão `src/components/app/HistoryView.tsx`:
+  - Listagem cronológica das receitas existentes na pasta `outputs/` via `GET /receitas`.
+  - Apresentação em grelha de fichas culinárias encadernadas com data e título.
+  - Estado vazio aconchegante caso o histórico esteja em branco, com botão direto para o Fogão.
+- [ ] Implementar a gaveta lateral ou modal de consulta de receita:
+  - Obtenção do conteúdo integral via `GET /receitas/{ficheiro}`.
+  - Renderização completa no componente `RecipeTicket.tsx`.
+- [ ] Assegurar compilação limpa com `npm run build` (0 erros).
+
+---
+
+## Fase V2.5 — Polimento Tátil, Notificações, Acessibilidade e Auditoria Final
+- [ ] Criar sistema de notificações táteis (`ToastContext.tsx` e componente `Toast.tsx`) para todas as operações do CRUD e ações do chat.
+- [ ] Refinar as animações de transição de abas e componentes com o Framer Motion, garantindo respeito pelo seletor «Lume vivo / Lume brando» e `prefers-reduced-motion`.
+- [ ] Validar compatibilidade perfeita em Modo Claro e Modo Escuro em todos os componentes da Web App.
+- [ ] Efetuar revisão responsiva minuciosa (ecrãs mobile de 375px a monitores 4K).
+- [ ] Conduzir auditoria de acessibilidade (foco visível, contraste AA, navegação por teclado e atributos ARIA).
+- [ ] Testar compilação de produção e integridade de tipos com `npm run build` (0 erros e 0 avisos).

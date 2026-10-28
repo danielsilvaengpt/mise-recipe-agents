@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useAppMotion } from '../context/MotionContext';
@@ -91,15 +92,21 @@ export const Button: React.FC<ButtonProps> = ({
       className="inline-block"
     >
       {href ? (
-        <a
-          href={href}
-          className={combinedClasses}
-          {...(external
-            ? { target: '_blank', rel: 'noopener noreferrer' }
-            : {})}
-        >
-          {content}
-        </a>
+        !external && href.startsWith('/') ? (
+          <Link to={href} className={combinedClasses}>
+            {content}
+          </Link>
+        ) : (
+          <a
+            href={href}
+            className={combinedClasses}
+            {...(external
+              ? { target: '_blank', rel: 'noopener noreferrer' }
+              : {})}
+          >
+            {content}
+          </a>
+        )
       ) : (
         <button className={combinedClasses} {...props}>
           {content}

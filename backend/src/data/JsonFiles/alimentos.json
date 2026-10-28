@@ -5,5 +5,12 @@
         "unidade": "kg",
         "restricoes": [],
         "validade": "2026-12-24"
+    },
+    {
+        "nome": "Grao de bico",
+        "quantidade": 1.0,
+        "unidade": "un",
+        "restricoes": [],
+        "validade": "2026-10-29"
     }
 ]

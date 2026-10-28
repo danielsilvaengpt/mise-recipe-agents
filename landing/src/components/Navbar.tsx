@@ -109,7 +109,7 @@ export const Navbar: React.FC = () => {
             )}
           </button>
 
-          <Button href={content.appUrl} external variant="primary" className="!py-2 !px-5 !text-sm">
+          <Button href={content.appUrl} variant="primary" className="!py-2 !px-5 !text-sm">
             {content.navbar.cta}
           </Button>
         </div>
@@ -178,7 +178,6 @@ export const Navbar: React.FC = () => {
             <div className="pt-3">
               <Button
                 href={content.appUrl}
-                external
                 variant="primary"
                 className="w-full text-center justify-center"
                 onClick={closeMobileMenu}

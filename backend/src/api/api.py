@@ -2,6 +2,7 @@ from datetime import datetime
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from src.Crew.crew import run_crew
@@ -23,7 +24,15 @@ class AjusteQuantidade(BaseModel):
     delta: float
 
 
-app = FastAPI()
+app = FastAPI(title="Mise API", description="API de receitas com CrewAI e despensa")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 repo = AlimentoRepository()
 
 

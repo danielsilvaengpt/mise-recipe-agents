@@ -37,7 +37,6 @@ export const CtaFinal: React.FC = () => {
           <div className="flex justify-center mt-8">
             <Button
               href={appUrl}
-              external
               variant="primary"
               icon
               className="!text-base !px-8 !py-4 shadow-md"

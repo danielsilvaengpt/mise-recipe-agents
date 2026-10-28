@@ -1,69 +1,140 @@
-# CONTENT.md — Textos da landing page (PT-PT)
+# CONTENT.md — Textos Oficiais da Plataforma Mise V2 (PT-PT)
 
-> Única fonte de texto. Não inventar funcionalidades, números ou depoimentos.
-> Substituir `{APP_URL}` por `VITE_APP_URL`.
+> **Fonte Única de Verdade:** Todos os textos e mensagens da interface devem ser extraídos exclusivamente deste ficheiro. Proibido inventar termos técnicos, mensagens em inglês ou grafia que não seja Português de Portugal.
 
-## Navbar
-Logo: **Mise** · Links: Como funciona · Agentes · Despensa · FAQ · Botão: **Experimentar**
+---
 
-## Hero
-- Etiqueta: `MISE EN PLACE · COZINHA DE APROVEITAMENTO`
-- H1: **Abre a despensa. Nós inventamos o jantar.**
-- Subtítulo: Diz o que te apetece. Três especialistas — um chef, um redator e um revisor — desenham a receita ideal com o que realmente tens em casa e dizem-te, sem rodeios, o que te falta.
-- CTA primário: **Experimentar agora →**
-- CTA secundário: Ver como funciona
-- Nota por baixo: Gratuito para experimentar · Em português de Portugal
+## 1. Navegação Geral da Web App
 
-## Problema
-- H2: Tens comida em casa. Só não sabes o que fazer com ela.
-- Texto: Meio pacote de massa, um limão a murchar, dois ovos. Pesquisar receitas dá voltas e quase todas pedem ingredientes que não tens. O resultado? Desperdício, encomendas desnecessárias e o mesmo prato de sempre.
+- **Botão de Regresso:** `← Voltar à Apresentação`
+- **Abas Principais:**
+  - `O Fogão` (Chat com a Brigada)
+  - `A Despensa` (Gestão de Ingredientes)
+  - `O Livro de Receitas` (Histórico Arquivado)
+- **Interruptor de Movimento:**
+  - Ativo: `Lume vivo (Animações ativas)`
+  - Inativo: `Lume brando (Modo estático / suave)`
+- **Indicador de Estado da API do Backend:**
+  - Ligado (Online): `● API do Backend Ativa (localhost:8000)`
+  - Desligado (Offline): `○ API do Backend Offline · Inicia o servidor Python: uvicorn src.api.api:app --reload`
+- **Aviso de Backend Offline (Banner Superior):**
+  - `Atenção: O servidor backend (FastAPI) não está acessível na porta 8000. Para fazeres pedidos à brigada, gerires a despensa e consultares receitas reais, inicia o backend no terminal: cd backend && uvicorn src.api.api:app --reload`
 
-## Os 3 agentes
-- H2: Uma equipa na tua cozinha
-- Intro: Cada receita passa por três especialistas, em sequência, como numa cozinha a sério.
-1. **Chef criativo** — Olha para o teu pedido e para a despensa, propõe dois pratos e escolhe o melhor. Cozinha simples, de aproveitamento, sem técnicas de restaurante.
-2. **Redator de receitas** — Transforma a ideia do chef numa receita clara: quantidades exatas, passos numerados, uma ação por passo, tempos e temperaturas.
-3. **Revisor** — A última linha de defesa. Confirma que é realista e segura, que respeita as tuas restrições e o tempo que tens, e que a lista e os passos batem certo.
+---
 
-## Como funciona
-- H2: Do frigorífico ao prato em três passos
-1. **Regista a despensa** — Adiciona o que tens: quantidade, unidade, restrições alimentares e validade.
-2. **Faz o teu pedido** — "Algo rápido para duas pessoas, sem glúten." Escreve como falarias com um amigo.
-3. **Recebe a receita** — Receita completa em Markdown, com tabela do que tens e do que falta.
+## 2. O Fogão (Chat e Geração de Receitas)
 
-## Despensa
-- H2: A tua despensa, sempre à mão
-- Texto: Guarda cada alimento com quantidade, unidade, restrições e data de validade. Se registares o mesmo alimento outra vez, a quantidade soma-se. Podes ajustar ou remover a qualquer momento.
-- Bullets: Validade por alimento · Restrições (vegan, sem glúten…) · Ajuste rápido de quantidades
+- **Título do Ecrã:** `O Fogão da Brigada`
+- **Subtítulo:** `Diz o que te apetece, o tempo disponível ou para quantas pessoas queres cozinhar. O Chef, o Redator e o Revisor tratam de tudo.`
+- **Sugestões Rápidas de Início (Chips de Rascunho):**
+  - `Jantar rápido para duas pessoas com o que tenho no frigorífico`
+  - `Refeição reconfortante de aproveitamento sem carne`
+  - `Almoço ligeiro e saciante em menos de 20 minutos`
+  - `Ideia simples e saudável para aproveitar legumes esquecidos`
+- **Caixa de Entrada (Input do Pedido):**
+  - Placeholder: `Escreve aqui o teu pedido culinário... (ex.: Quero um prato quente para hoje à noite)`
+  - Botão de Envio: `Lançar Pedido →`
+  - Dica de Atalho: `Pressiona Enter para enviar`
 
-## Honestidade nos ingredientes
-- H2: Se faltar alguma coisa, dizemos-te.
-- Texto: Não fingimos que tens o que não tens. Cada receita traz uma tabela clara com os ingredientes **disponíveis** e os que **faltam**, e sugestões de substituição quando existem. Sal, azeite, água e pimenta contam sempre como disponíveis.
-- Selos: `DISPONÍVEL` · `EM FALTA`
+### Estados da Orquestração da Brigada (Loading)
+- `A consultar os mantimentos na despensa...`
+- `1. O Chef Criativo está a desenhar duas opções com base no teu pedido...`
+- `2. O Redator de Receitas está a estruturar as quantidades e passos de preparação...`
+- `3. O Revisor de Segurança está a verificar temperaturas e restrições alimentares...`
 
-## Pré-visualização da receita
-- H2: Assim se vê uma receita
-- Mostrar um exemplo ilustrativo, claramente marcado como **"Exemplo ilustrativo"** (título, tempo, doses, tabela disponível/em falta, 4–5 passos).
+### Ticket da Receita Gerada (Comanda de Cozinha)
+- **Número de Série:** `COMANDA DE COZINHA Nº {numero}`
+- **Carimbos de Auditoria:**
+  - `BRIGADA MISE · REVISADO E APROVADO`
+  - `SEGURANÇA ALIMENTAR CONFIRMADA`
+- **Metadados do Prato:**
+  - Tempo: `Tempo estimado: {tempo}`
+  - Doses: `Rendimento: {doses}`
+  - Dificuldade: `Dificuldade: {dificuldade}`
+- **Tabela de Honestidade de Ingredientes:**
+  - Título: `Ingredientes e Mantimentos`
+  - Colunas: `Ingrediente`, `Dose necessária`, `Estado na Despensa`
+  - Selo Verde: `DISPONÍVEL NA DESPENSA`
+  - Selo Açafrão: `EM FALTA (SUGESTÃO DE SUBSTITUIÇÃO)`
+  - Nota de Básicos: `* Sal, azeite, água e pimenta assumem-se sempre disponíveis na bancada.`
+- **Passos de Confeção:**
+  - Título: `Instruções de Preparação`
+  - Indicador de Passo: `PASSO {n}`
+- **Ações da Comanda:**
+  - `Copiar Ficha Culinária`
+  - `Imprimir Comanda`
+  - Feedback de Cópia: `Receita copiada com sucesso para a área de transferência!`
 
-## Segurança e cuidado
-- H2: Pensado para cozinhares com confiança
-- Texto: O revisor verifica quantidades, tempos e temperaturas internas seguras (por exemplo, frango bem cozinhado) antes de a receita chegar a ti.
+---
 
-## FAQ
-1. **Preciso de registar todos os alimentos?** — Não. Quanto mais registares, mais ajustada fica a receita. Se faltar algo, a receita indica-o.
-2. **E se não tiver todos os ingredientes?** — A receita é gerada na mesma e diz-te claramente o que falta, com substituições quando possível.
-3. **Respeita restrições alimentares?** — Sim. Podes indicar restrições nos alimentos e no pedido, e o revisor confirma-as.
-4. **Em que língua vêm as receitas?** — Português de Portugal.
-5. **As receitas ficam guardadas?** — Sim, a app guarda o histórico das receitas geradas.
-6. **A IA pode enganar-se?** — Pode. Por isso há um revisor e temperaturas seguras de referência, mas usa sempre o bom senso, sobretudo com alergias.
+## 3. A Despensa Digital (CRUD de Alimentos)
 
-## CTA final
-- H2: O que há para jantar? Vamos descobrir.
-- Botão: **Experimentar agora →**
+- **Título do Ecrã:** `A Minha Despensa`
+- **Subtítulo:** `Cada ingrediente registado permite à brigada saber exatamente com o que pode contar para criar as tuas receitas sem desperdício.`
+- **Resumo de Inventário:**
+  - `{total} alimentos registados`
+  - `{urgentes} com validade próxima ou urgente`
+- **Botão de Ação Primária:** `+ Registar Novo Ingrediente`
+- **Filtros de Visualização:**
+  - `Todos os mantimentos`
+  - `Consumo urgente (< 3 dias)`
+  - `Dentro do prazo normal`
 
-## Footer
-Mise · Projeto feito com Streamlit, CrewAI e FastAPI · © {ANO} · GitHub (https://github.com/danielsilvaengpt/mise-recipe-agents)
+### Cartão de Alimento na Grelha
+- **Controlos de Quantidade:**
+  - Botão Menos: `Reduzir quantidade (−)`
+  - Botão Mais: `Aumentar quantidade (+)`
+- **Crachás de Validade:**
+  - `Fresco · Válido até {data}` (Mais de 7 dias)
+  - `Consumir em breve · Restam {dias} dias` (Entre 2 e 7 dias)
+  - `Urgente · Caduca hoje ou amanhã` (Até 24h)
+  - `Caducado há {dias} dias` (Data ultrapassada)
+- **Botão de Eliminação:** `Remover ingrediente`
+- **Diálogo de Confirmação:** `Tens a certeza de que queres retirar «{nome}» da tua despensa?`
+  - `Confirmar remoção` / `Manter na despensa`
 
-## SEO
-- Title: Mise — Receitas com IA a partir da tua despensa
-- Description: Mise usa uma equipa de agentes de IA para criar receitas com os ingredientes que tens em casa e diz-te o que falta. Em português de Portugal.
+### Formulário de Registo (`AddFoodModal`)
+- **Título do Modal:** `Registar Alimento na Despensa`
+- **Subtítulo:** `Adiciona o que tens guardado no frigorífico ou armário.`
+- **Etiquetas de Campos e Sugestões:**
+  - Nome do Alimento: `Nome do ingrediente`
+    - Placeholder: `ex.: Grão-de-bico cozido, Ovos frescos, Cenouras`
+  - Quantidade: `Quantidade existente`
+    - Placeholder: `ex.: 400`
+  - Unidade de Medida: `Unidade`
+    - Opções: `g (gramas)`, `kg (quilogramas)`, `un (unidades)`, `ml (mililitros)`, `l (litros)`, `c. sopa (colheres)`, `dentes (alho)`
+  - Data de Validade: `Data de validade limite`
+  - Restrições / Etiquetas Alimentares: `Restrições ou características`
+    - Opções rápidas: `Sem glúten`, `Vegan`, `Vegetariano`, `Sem lactose`, `Biológico`
+- **Botões do Formulário:**
+  - Cancelar: `Voltar atrás`
+  - Submeter: `Guardar Ingrediente na Despensa`
+- **Validações:**
+  - `O nome do alimento é obrigatório.`
+  - `A quantidade tem de ser maior que zero.`
+  - `A data de validade deve cumprir o formato AAAA-MM-DD.`
+
+---
+
+## 4. O Livro de Receitas (Histórico de Confeções)
+
+- **Título do Ecrã:** `O Livro de Receitas da Casa`
+- **Subtítulo:** `O histórico completo de todas as receitas geradas pela brigada de agentes, arquivadas e prontas a repetir.`
+- **Contador:** `{total} fichas de cozinha guardadas`
+- **Lista de Entradas:**
+  - Rótulo de Data: `Preparada a {data} às {hora}`
+  - Botão de Ação: `Abrir comanda completa →`
+- **Estado Vazio (Quando ainda não há histórico):**
+  - `O teu livro de receitas ainda está em branco.`
+  - `Visita o Fogão, faz o teu primeiro pedido à brigada e guarda aqui as tuas criações favoritas para cozinhares quando quiseres.`
+  - Botão: `Ir para o Fogão agora →`
+
+---
+
+## 5. Notificações e Mensagens de Sistema (Toasts)
+
+- **Sucesso ao Adicionar Alimento:** `«{nome}» guardado com sucesso na tua despensa!`
+- **Sucesso ao Ajustar Quantidade:** `Quantidade de «{nome}» atualizada.`
+- **Sucesso ao Remover Alimento:** `«{nome}» retirado da despensa.`
+- **Erro de Rede / Backend Offline:** `Não foi possível ligar ao servidor local (porta 8000). A utilizar a memória local da bancada.`
+- **Erro de Pedido Vazio:** `Escreve o teu pedido antes de chamar a brigada de cozinha.`

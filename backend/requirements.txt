@@ -2,8 +2,6 @@ crewai==1.15.28
 crewai-cli==1.15.28
 crewai-core==1.15.28
 litellm==1.106.2
-mcp==2.3.0
-mcp-types==2.3.0
 fastapi
 uvicorn[standard]
 streamlit

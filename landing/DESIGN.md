@@ -1,105 +1,115 @@
-# DESIGN.md — Sistema visual Mise
+# DESIGN.md — Sistema Visual Mise V2 (Landing Page + Web App)
 
-## 1. Conceito criativo: "A cozinha dos agentes"
-Em vez do típico site de receitas (fotos de comida genéricas, verde "saudável"), o conceito é
-**um caderno de cozinha de tasca portuguesa encontra uma mesa de comando de IA**.
-- Marca: **Mise** (alusão a *mise en place* — tudo no seu lugar antes de cozinhar).
-- Calor, papel, tinta e ingredientes (o chef) **+** rigor, fluxos e etiquetas (a brigada de cozinha).
-- Elemento assinatura: **a receita como "ticket de cozinha"** — cartões com fita de mascarar de chef (*masking tape*), bordas picotadas, carimbos com textura física de borracha ("DISPONÍVEL" / "EM FALTA") e um fio de linha tracejada que liga os 3 especialistas da brigada.
-- Personalidade: confiante, caseira, inteligente, com atenção ao detalhe físico de um atelier gastronómico. Nunca fria, nunca robótica, nunca infantil.
+## 1. O Conceito Criativo: "A Bancada de Trabalho do Chef"
 
-**Princípios Anti-IA & Human Craft (Proibição estrita de AI-clichés):**
-- **Zero Sparkles:** Proibido o uso de ícones de três faíscas/estrelinhas (`Sparkles`), o cliché universal de IA genérica.
-- **Vocabulário Culinário Autêntico:** Substituição de termos de computação frios (*"pipeline sequencial"*, *"agentes de IA"*) por conceitos da tradição gastronómica (*"ordem de brigada"*, *"mise en place"*, *"serviço de três tempos"*).
-- **Textura Táctil de Papel:** Camada subtil de grão analógico SVG com micro-ruído de prensa de tipografia, quebrando a frieza lisa de ecrãs de computador.
-- **Artefactos Materiais Reais:** Fita adesiva crepe de cozinheiro (*masking tape* rasgada à mão), notas de margem com caligrafia de cozinheiro (*marginalia*), carimbos com tinta orgânica e textura de borracha envelhecida.
-- **Humor e Calor de Cozinha:** Controlos temáticos (ex.: alternador de animações como *«Lume vivo»* vs. *«Lume brando»*, em vez de switches técnicos genéricos).
-- Evitar: gradientes roxo/azul "aurora", glassmorphism plástico, fotos de banco de imagem, emojis soltos.
+Se a Landing Page é a receção calorosa a uma casa de campo contemporânea com cheiro a lenha, a **Web App do Mise** é a **própria bancada de cozinha em pleno serviço**.
+- **Metáfora:** Deixamos os ecrãs corporativos e entramos no atelier culinário: papéis de rascunho com notas à mão, fita adesiva de pintor (*masking tape*) a etiquetar frascos na despensa, carimbos de tinta prensada em madeira e comandas térmicas que saem com precisão.
+- **Identidade:** Quente, humana, rigorosa, estética e cativante. Não parece um "software", parece uma ferramenta de artesão desenhada para quem tem prazer na mesa e na cozinha de aproveitamento.
 
-## 2. Cor (tokens)
-Modo claro por defeito (papel quente). Modo escuro opcional.
+---
 
-| Token | Hex | Uso |
-|---|---|---|
-| `--paper` | `#FBF6EC` | Fundo principal |
-| `--paper-2` | `#F3EAD8` | Secções alternadas, cartões |
-| `--ink` | `#1E1B16` | Texto principal |
-| `--ink-soft` | `#5C5547` | Texto secundário |
-| `--tomato` | `#D8432B` | Cor de ação (CTA), destaques |
-| `--olive` | `#4F5D2F` | "Disponível", sucesso |
-| `--saffron` | `#E9A83B` | Realces, selos, "em falta" |
-| `--line` | `#D9CDB4` | Bordas e linhas tracejadas |
+## 2. Princípios Anti-IA (Zero Clichés de Inteligência Artificial)
 
-Escuro: `--paper #17140F`, `--paper-2 #211D16`, `--ink #F4ECDC`, `--ink-soft #B3A98F`, `--line #3A3326`.
-Contraste mínimo AA em todos os pares texto/fundo. CTA: fundo `--tomato`, texto `--paper`.
+A Web App respeita escrupulosamente os princípios anti-IA estipulados na V1:
+1. **Sem "Sparkles" ou Estrelinhas:** Proibido o ícone de três estrelinhas (`Sparkles`) universalmente associado a ferramentas genéricas de IA.
+2. **Sem Frieza de Chatbot:** O chat não tem avatares robóticos nem balões cinzentos de aplicação de mensagens descartável. O diálogo faz-se como um memorando de cozinha: os pedidos do utilizador são notas de comanda e as respostas da brigada são **fichas técnicas e tickets de restaurante ricamente desenhados**.
+3. **Sem Gradientes Elétricos (Aurora/Neon):** Proibidos roxos, magentas e cianos de ficção científica. Toda a luminosidade vem de elementos naturais: azeite virgem, açafrão, brasa de tomate, papel envelhecido e ferro fundido.
+4. **Textura Táctil e Fita Crepe:** Elementos de interface destacados (como novos alimentos ou a comanda em confeção) exibem acabamentos de fita adesiva de papel rasgada à mão nos cantos.
 
-## 3. Tipografia (Sistema 1: Tasca Contemporânea & Editorial de Luxo)
-- **Títulos:** `Fraunces Variable` (serifada expressiva, variable `opsz`) — pesos 600–800, tracking ligeiramente negativo, com itálicos editoriais em palavras de ênfase (ex.: *inventamos*).
-- **Corpo/UI:** `Plus Jakarta Sans` — 400/500/600/700 (quente, geométrica, humanista e elegante).
-- **Detalhe "ticket"/dados:** `Space Mono` — etiquetas, quantidades, passos e comanda (estética de talão de cozinha mecânico e autêntico).
-- Escala fluida: H1 `clamp(2.6rem, 6vw, 5.2rem)`, H2 `clamp(1.9rem, 4vw, 3.2rem)`, corpo `1.0625rem/1.65`.
-- Largura máx. de texto: 62ch.
+---
 
-## 4. Layout e espaçamento
-- Container: `max-w-6xl`, padding lateral 20px (mobile) / 32px (desktop).
-- Ritmo vertical: secções com `py-20 md:py-32`.
-- Grelha de 12 colunas; hero assimétrico (texto 6 col / visual 6 col).
-- Raio: 14px cartões, 999px botões/etiquetas. Bordas 1.5px `--line`. Sombras suaves e quentes
-  (`0 10px 30px -12px rgba(60,40,10,.25)`).
+## 3. Paleta de Cores e Tokens
 
-## 5. Componentes-chave
-- **Botão primário:** pílula `--tomato`, seta que desliza 4px no hover, foco com anel `--saffron`.
-- **Botão secundário:** contorno `--ink`, fundo transparente.
-- **Ticket (cartão de receita):** fundo `--paper`, borda picotada (mask em CSS) em cima/baixo, cabeçalho mono
-  ("RECEITA Nº 014"), tabela de ingredientes com selos.
-- **Selo/carimbo:** rotação −3°, borda dupla, mono maiúsculas. Verde-azeitona = DISPONÍVEL; açafrão = EM FALTA.
-- **Fio dos agentes:** linha tracejada SVG que se "desenha" ao fazer scroll, ligando Chef → Redator → Revisor.
-- **Navbar:** transparente, ganha fundo `--paper` com blur leve ao fazer scroll. Logo em Fraunces.
+A aplicação mantém a paleta orgânica do Mise com suporte completo a **Modo Claro** (papel artesanal) e **Modo Escuro** (bancada noturna de ferro e pedra):
 
-## 6. Secções (ordem)
-1. **Navbar** — logotipo, navegação, seletor de tema e interruptor mestre «Lume vivo / Lume brando»
-2. **Hero** — promessa + CTA + ticket de receita com fita crepe de cozinheiro e extrusão mecânica cristalina
-3. **Carrossel da Stack Tecnológica** — infinite marquee contínuo a 60 FPS com 9 ferramentas e links oficiais
-4. **Problema** — "Tens comida em casa e não sabes o que cozinhar"
-5. **Os 3 agentes (Brigada)** — mesa de orquestração com 3 postos (Chef, Redator, Revisor) com tipografia horizontal pixel-perfect
-6. **Como funciona** — 3 passos (regista despensa → pede → recebe receita)
-7. **Despensa** — mockup da lista de alimentos com validade
-8. **Honestidade ingrediente** — "Disponível vs. em falta" (o diferenciador)
-9. **Pré-visualização da receita** — exemplo completo em Markdown com anotação manual de fogão
-10. **FAQ** — acordeão acessível
-11. **CTA final** + **Footer** (com link direto de código aberto para o GitHub)
+| Token | Modo Claro | Modo Escuro | Uso Gastronómico |
+|---|---|---|---|
+| `--paper` | `#FBF6EC` | `#17140F` | Fundo principal da bancada e base dos ecrãs |
+| `--paper-2` | `#F3EAD8` | `#211D16` | Fundo dos cartões, balões de chat e gavetas |
+| `--ink` | `#1E1B16` | `#F4ECDC` | Títulos e texto principal (máxima legibilidade) |
+| `--ink-soft` | `#5C5547` | `#B3A98F` | Notas secundárias, unidades e legendas |
+| `--tomato` | `#D8432B` | `#E04F37` | Ação principal, botão de enviar, alertas de validade expirada |
+| `--olive` | `#4F5D2F` | `#728744` | Selo «DISPONÍVEL», alimentos frescos (>7 dias), sucesso |
+| `--saffron` | `#E9A83B` | `#F5B853` | Selo «EM FALTA», alimentos a expirar (2–7 dias), foco |
+| `--line` | `#D9CDB4` | `#3A3326` | Bordas de cadernos, separadores e picotados |
 
-## 7. Movimento, Interatividade e Nitidez Tipográfica
-- **Regra de Ouro de Nitidez Tipográfica (Zero 3D Blur):**
-  - Textos de leitura nunca devem sofrer rotações 3D contínuas (`preserve-3d`, `rotateX/Y` agressivos) nem filtros de desfoque (`filter: blur(...)`).
-  - Fontes renderizadas com antialiasing subpixel nítido (`-webkit-font-smoothing: antialiased`, `text-rendering: optimizeLegibility`).
-  - Texturas analógicas de papel mantidas sempre no fundo (`z-0`) para não interferir na acuidade das letras.
-- **Hero — Abertura Cinemática «A Bancada Noturna do Chef»:**
-  - Iluminação volumétrica de estúdio: foco dinâmico que projeta luz quente (`--saffron` / `--paper`) e profundidade de campo que reage ao cursor do rato.
-  - Coreografia sequencial de abertura com extrusão mecânica suave e estável, assentando com tipografia perfeitamente horizontal e nítida.
-  - Comando cinemático «↺ Rever Sequência» para acionar a experiência a qualquer momento.
-- **Carrossel da Stack Tecnológica (Infinite Marquee):**
-  - Loop contínuo a 60 FPS com desvanecimento lateral (*edge vignette fade*) ligando o ecossistema à documentação oficial.
-  - Pausa e renderização estática imediata quando em modo «Lume brando».
-- **A Brigada de Cozinha — Mesa de Orquestração com Tipografia Nítida:**
-  - 3 postos de trabalho coordenados por linha do tempo automática (5.5s) e controlo manual (Play/Pause).
-  - Transições puras entre estações sem distorções fracionárias ou rotações diagonais, garantindo leitura rápida e agradável.
-- **Controlo Mestre de Animações («Lume Vivo» vs. «Lume Brando»):**
-  - Alternador temático na Navbar ligado a `MotionContext`, comandando instantaneamente todas as secções da página.
-- **Despensa e Listas — Efeito Fita Adesiva / Etiqueta Destacada:**
-  - As linhas da lista da despensa reagem ao hover com ligeira elevação elástica e efeito de etiqueta adesiva.
-- **Botões — Microinteração Magnética:**
-  - Os botões primários têm uma atração magnética subtil em direção ao cursor quando o ponteiro se aproxima (`magnetic button`).
-- **Acessibilidade e Desempenho:**
-  - **Obrigatório:** Se `prefers-reduced-motion: reduce` estiver ativo, todas as transformações 3D no rato, pulsos contínuos e passos mecânicos são desativados, mantendo apresentação estática, legível e limpa.
-  - 60fps constantes com aceleração por hardware e transformações CSS/SVG.
+---
 
-## 8. Imagem e ícones
-- Sem fotos de stock. Usar **ilustrações SVG** simples (ingredientes em traço, estilo gravura) e mockups em HTML/CSS.
-- Ícones: `lucide-react`, traço 1.75px, cor `--ink`.
-- Favicon: monograma "M" em Fraunces sobre `--tomato`.
-- OG image 1200×630: ticket de receita com a marca Mise sobre `--paper`.
+## 4. Tipografia de Autor
 
-## 9. Tom de voz
-Português de Portugal. Direto, caloroso, com humor leve de cozinha caseira. Frases curtas.
-Exemplo: "Abre o frigorífico. Nós tratamos do resto."
+Mantém-se o sistema tipográfico de três famílias complementares:
+1. **Fraunces Variable** (serifa expressiva): Nomes dos pratos principais, cabeçalhos de secção e números dos passos com ênfase humanista.
+2. **Plus Jakarta Sans** (geométrica e humanista): Interface geral, botões, campos de entrada, etiquetas de formulário e textos descritivos.
+3. **Space Mono** (monoespaçada): Comandas, gramagens e unidades, carimbos «DISPONÍVEL» / «EM FALTA», telemetria de tempos de cozedura e datas de validade.
+
+---
+
+## 5. Arquitetura Visual e Telas da Web App
+
+### 5.1. Barra de Comandos da Cozinha (Layout Superior / Lateral)
+- **Logótipo Mise:** Com link de regresso suave à Landing Page.
+- **Seletor de Postos (Abas Principais):**
+  - 🍳 **O Fogão (Chat):** Onde o pedido é feito e a receita nasce.
+  - 🥫 **A Despensa (CRUD):** Onde os alimentos em stock são geridos.
+  - 📖 **O Livro (Histórico):** O arquivo de receitas geradas anteriormente.
+- **Controlos Rápidos & Telemetria:**
+  - **Pílula de Ligação à API:** Indicador tátil no topo com pulso verde suave quando a API FastAPI está ligada (`● Backend Conectado`), ou aviso âmbar quando offline (`○ Backend Offline`), permitindo saber imediatamente se o servidor local está ativo.
+  - Alternador de tema (Claro / Escuro).
+  - Interruptor mestre **«Lume vivo / Lume brando»** (gestão de animações suaves e acessibilidade).
+
+---
+
+### 5.2. Módulo 1: O Fogão (Chat com a Brigada)
+- **Área de Diálogo:**
+  - **Mensagem do Utilizador:** Cartão ligeiro com borda de fita de marinheiro, alinhado à direita, texto nítido em `Plus Jakarta Sans`.
+  - **Estado de Orquestração da Brigada (Loading Cinemático):**
+    Quando o pedido é enviado (`POST /ask`), surge um mostrador sequencial com 3 luzes indicadoras e microanimação tátil:
+    1. *«O Chef está a analisar a despensa e a propor duas ideias...»*
+    2. *«O Redator está a converter a escolha em passos numerados...»*
+    3. *«O Revisor está a inspecionar temperaturas e restrições...»*
+  - **Resposta da Brigada (O Ticket Vivo):**
+    A resposta em Markdown é renderizada com um componente visual idêntico a uma **comanda de restaurante de autor**:
+    - Cabeçalho picotado com número da comanda (ex.: `RECEITA Nº 042`).
+    - Nome do prato em `Fraunces` grande e imponente.
+    - Badges de tempo de preparação, doses e nível de dificuldade.
+    - **Tabela de Honestidade de Ingredientes:**
+      - Verde-azeitona com carimbo `DISPONÍVEL` para o que está na despensa.
+      - Açafrão com carimbo `EM FALTA` (com nota de substituição quando aplicável).
+    - Passos de confeção numerados em `Space Mono`, com instruções concisas e tempos exatos.
+    - Botão de ação rápida no rodapé do ticket: **«Copiar Receita»** e **«Imprimir Comanda»**.
+
+---
+
+### 5.3. Módulo 2: A Despensa Digital (CRUD de Alimentos)
+- **Cabeçalho da Despensa:** Mostra o total de alimentos registados e resumo de alertas (ex.: *«12 alimentos registados · 2 a expirar esta semana»*).
+- **Botão Primário de Ação:** `+ Adicionar Alimento` (botão com efeito magnético no hover).
+- **Grelha de Alimentos:**
+  - Cada alimento é apresentado como um **frasco/etiqueta de mantimentos**:
+    - Nome do alimento em destaque tipográfico.
+    - Quantidade e unidade com controlos imediatos de ajuste `−` e `+` (acionam `PATCH /alimentos/quantidade`).
+    - Chips de restrições alimentares (ex.: `Sem Glúten`, `Vegan`).
+    - **Indicador Cromático de Validade:**
+      - 🟢 Verde-azeitona: Validade folgada (> 7 dias).
+      - 🟡 Açafrão: Consumo prioritário (entre 2 e 7 dias).
+      - 🔴 Tomate: Alerta imediato (hoje, amanhã ou já caducado).
+    - Botão discreto de remoção com confirmação tátil (aciona `DELETE /alimentos`).
+- **Painel Modal de Criação (`AddFoodModal`):**
+  - Desliza suavemente como um bloco de notas de mercearia.
+  - Campos: Nome, Quantidade, Unidade (com seletor rápido: g, kg, un, ml, l, c. sopa, dentes), Restrições e Calendário de Validade.
+
+---
+
+### 5.4. Módulo 3: O Livro de Receitas (Histórico)
+- **Catálogo Cronológico:** Lista das receitas previamente geradas (`GET /receitas`), apresentadas como fichas de arquivo culinário encadernadas.
+- **Informação de Cada Entrada:** Título do prato, data e hora de criação formatadas em português (ex.: `28/10/2026 às 19:30`).
+- **Interação:** Clicar num item abre a gaveta de visualização com o **Ticket Completo**, permitindo reler todos os passos e ingredientes sem necessidade de voltar a gastar tokens de IA.
+
+---
+
+## 6. Física de Movimento e Microinterações (Framer Motion)
+
+- **Transição Entre Postos (Tabs):** Deslize lateral com fade suave (`x: 16`, `opacity: 0` para `x: 0`, `opacity: 1`), transmitindo fluidez contínua.
+- **Ajuste de Quantidades:** O número da quantidade sofre uma micro-elevação elástica ao ser incrementado ou decrementado.
+- **Carimbos:** Os carimbos de validação surgem com rotação aleatória subtil (−2° a +2°) e impacto suave de batimento com borracha.
+- **Respeito Acessível (`prefers-reduced-motion`):**
+  - Quando o modo de movimento reduzido está ativo no sistema ou o interruptor «Lume brando» é selecionado, todas as transições tornam-se cortes diretos sem desfoques nem deslocamentos espaciais.

@@ -33,12 +33,12 @@ export interface RecipeTicketExample {
   }[];
 }
 
-const appUrl = import.meta.env.VITE_APP_URL || '#';
+const appUrl = import.meta.env.VITE_APP_URL || '/app';
 
 export const content = {
   appUrl,
   navbar: {
-    logo: 'Mise',
+    logo: 'MiseAI',
     links: [
       { label: 'Como funciona', href: '#como-funciona' },
       { label: 'Agentes', href: '#agentes' },
