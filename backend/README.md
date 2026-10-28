@@ -113,9 +113,7 @@ python main.py
 
 ```text
 backend/
-├── app.py                  # Interface Streamlit
 ├── main.py                 # Execução por linha de comandos
-├── tema.py                 # Estilos da interface
 ├── requirements.txt        # Dependências Python
 └── src/
     ├── api/api.py          # Endpoints FastAPI
