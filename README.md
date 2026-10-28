@@ -135,8 +135,114 @@ npm run build
 
 ## 🍳 Backend Python (`backend/`)
 
-> *Secção reservada para a integração da aplicação central com CrewAI, FastAPI.*
+API em **FastAPI** que orquestra uma brigada de 3 agentes **CrewAI** (Chef, Redator e Revisor) para criar receitas a partir da despensa do utilizador. O modelo de linguagem corre na **Groq** (`groq/openai/gpt-oss-120b`) e a despensa é guardada num ficheiro JSON.
 
+### Como funciona
+
+1. **Chef criativo** — propõe 2 pratos com o inventário atual e escolhe o melhor.
+2. **Redator de receitas** — escreve a receita completa (ingredientes, quantidades, passos).
+3. **Revisor de receitas** — valida segurança, coerência e restrições, e devolve a receita final em Markdown, com a tabela de ingredientes disponíveis vs. em falta.
+
+A receita final é guardada em `backend/outputs/` como `receita_AAAAMMDD_HHMMSS.md`.
+
+### Estrutura
+
+```
+backend/
+├── requirements.txt
+├── .env.example            # modelo do ficheiro de configuração
+├── outputs/                # receitas geradas (criada automaticamente)
+└── src/
+    ├── api/api.py          # endpoints FastAPI
+    ├── Crew/               # agents.py, tasks.py, tools.py, llm.py, crew.py
+    ├── Repositories/       # alimento.py (CRUD da despensa)
+    ├── data/
+    │   ├── models.py       # modelo Pydantic `Alimento`
+    │   └── JsonFiles/alimentos.json
+    └── utils/rep.py
+```
+
+### Pré-requisitos
+
+- **Python 3.11**
+- Uma chave de API da **Groq** (plano gratuito em [console.groq.com](https://console.groq.com))
+
+### Instalação e execução
+
+Tudo a partir da pasta `backend/`:
+
+```bash
+cd backend
+
+# 1. Criar e ativar o ambiente virtual
+python -m venv .venv
+.venv\Scripts\activate          # Windows
+# source .venv/bin/activate     # macOS / Linux
+
+# 2. Instalar dependências
+python -m pip install -r requirements.txt
+
+# 3. Configurar a chave da Groq
+copy .env.example .env          # Windows
+# cp .env.example .env          # macOS / Linux
+# Abre o ficheiro .env e cola a tua chave: GROQ_API_KEY=gsk_...
+
+# 4. Arrancar o servidor
+python -m uvicorn src.api.api:app --reload
+```
+
+A API fica em **http://127.0.0.1:8000** e a documentação interativa (Swagger) em **http://127.0.0.1:8000/docs**, onde podes experimentar todos os endpoints sem escrever código.
+
+> ⚠️ Corre sempre o `uvicorn` a partir de `backend/`, porque os imports usam o prefixo `src.` e a pasta `outputs/` é relativa a essa localização.
+
+### Configuração (`.env`)
+
+```
+GROQ_API_KEY=gsk_a_tua_chave_aqui
+```
+
+O ficheiro deve chamar-se exatamente `.env` (no Windows, confirma que não ficou `.env.txt`), sem aspas nem espaços à volta do `=`. **Nunca** o envies para o GitHub; está no `.gitignore`.
+
+### Endpoints
+
+| Método | Rota | Descrição |
+|:------:|:-----|:----------|
+| `POST` | `/ask` | Gera uma receita a partir de um pedido (`{"question": "..."}`) |
+| `GET` | `/receitas` | Lista as receitas geradas |
+| `GET` | `/receitas/{ficheiro}` | Devolve o texto Markdown de uma receita |
+| `GET` | `/alimentos` | Lista os alimentos da despensa |
+| `POST` | `/alimentos` | Adiciona um alimento (se já existir, soma a quantidade) |
+| `PATCH` | `/alimentos/quantidade?nome=...` | Ajusta a quantidade (`{"delta": -0.5}`) |
+| `DELETE` | `/alimentos?nome=...` | Remove um alimento |
+
+### Exemplo rápido
+
+```bash
+# 1. Adicionar um alimento à despensa
+curl -X POST http://127.0.0.1:8000/alimentos \
+  -H "Content-Type: application/json" \
+  -d '{"nome":"Arroz Carolino","quantidade":1,"unidade":"kg","restricoes":[],"validade":"2026-12-24"}'
+
+# 2. Pedir uma receita
+curl -X POST http://127.0.0.1:8000/ask \
+  -H "Content-Type: application/json" \
+  -d '{"question":"Almoço ligeiro e saciante em menos de 20 minutos"}'
+```
+
+> No Windows (CMD/PowerShell) o `curl` trata as aspas de forma diferente; usa o Swagger em `/docs`, que é mais simples.
+
+A validade tem de estar no formato `AAAA-MM-DD` e a quantidade tem de ser maior que zero.
+
+### Resolução de problemas
+
+| Erro | Causa provável |
+|:-----|:---------------|
+| `ModuleNotFoundError: No module named 'crewai'` | Ambiente virtual não ativado, ou `pip install` não concluído |
+| `Invalid API Key` (Groq) | `.env` com nome errado ou fora de `backend/`, chave incorreta/revogada, ou servidor não reiniciado depois de editar o `.env` |
+| `ModuleNotFoundError: No module named 'src'` | `uvicorn` lançado fora da pasta `backend/` |
+| Receita demora ou falha | O plano gratuito da Groq tem limites de pedidos; espera um pouco e repete |
+
+> Em Linux/macOS os nomes de pastas são sensíveis a maiúsculas: mantêm-se `Crew/` e `Repositories/` tal como estão nos imports.
 ---
 
 
